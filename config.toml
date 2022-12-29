@@ -1,4 +1,4 @@
-baseURL = 'http://www.linuxguru.net/website/'
+baseURL = 'http://www.linuxguru.net/'
 languageCode = 'en-us'
 title = 'DevOps Thoughts and Ruminations'
 theme = 'blackburn'

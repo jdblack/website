@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on DevOps Thoughts and Ruminations</title>
-    <link>http://www.linuxguru.net/website/post/</link>
+    <link>http://www.linuxguru.net/post/</link>
     <description>Recent content in Posts on DevOps Thoughts and Ruminations</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 29 Dec 2022 21:24:48 +0700</lastBuildDate><atom:link href="http://www.linuxguru.net/website/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 29 Dec 2022 21:24:48 +0700</lastBuildDate><atom:link href="http://www.linuxguru.net/post/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Welcome</title>
-      <link>http://www.linuxguru.net/website/post/welcome/</link>
+      <link>http://www.linuxguru.net/post/welcome/</link>
       <pubDate>Thu, 29 Dec 2022 21:24:48 +0700</pubDate>
       
-      <guid>http://www.linuxguru.net/website/post/welcome/</guid>
+      <guid>http://www.linuxguru.net/post/welcome/</guid>
       <description>Welcome!</description>
     </item>
     
