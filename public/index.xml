@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>DevOps Thoughts and Ruminations</title>
+    <link>http://example.org/</link>
+    <description>Recent content on DevOps Thoughts and Ruminations</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 29 Dec 2022 21:24:48 +0700</lastBuildDate><atom:link href="http://example.org/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How to Contact Me</title>
+      <link>http://example.org/contact/</link>
+      <pubDate>Thu, 29 Dec 2022 21:27:29 +0700</pubDate>
+      
+      <guid>http://example.org/contact/</guid>
+      <description> one of my email addresses On FB I am tehjaydeebee I am jdblack on Github jblackwb on reddit </description>
+    </item>
+    
+    <item>
+      <title>Welcome</title>
+      <link>http://example.org/post/welcome/</link>
+      <pubDate>Thu, 29 Dec 2022 21:24:48 +0700</pubDate>
+      
+      <guid>http://example.org/post/welcome/</guid>
+      <description>Welcome!</description>
+    </item>
+    
+  </channel>
+</rss>
