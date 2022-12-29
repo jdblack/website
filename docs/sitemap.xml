@@ -2,20 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://example.org/contact/</loc>
+    <loc>http://www.linuxguru.net/contact/</loc>
     <lastmod>2022-12-29T21:27:29+07:00</lastmod>
   </url><url>
-    <loc>http://example.org/</loc>
+    <loc>http://www.linuxguru.net/</loc>
     <lastmod>2022-12-29T21:24:48+07:00</lastmod>
   </url><url>
-    <loc>http://example.org/post/</loc>
+    <loc>http://www.linuxguru.net/post/</loc>
     <lastmod>2022-12-29T21:24:48+07:00</lastmod>
   </url><url>
-    <loc>http://example.org/post/welcome/</loc>
+    <loc>http://www.linuxguru.net/post/welcome/</loc>
     <lastmod>2022-12-29T21:24:48+07:00</lastmod>
   </url><url>
-    <loc>http://example.org/categories/</loc>
+    <loc>http://www.linuxguru.net/categories/</loc>
   </url><url>
-    <loc>http://example.org/tags/</loc>
+    <loc>http://www.linuxguru.net/tags/</loc>
   </url>
 </urlset>
