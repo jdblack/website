@@ -2,26 +2,26 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>DevOps Thoughts and Ruminations</title>
-    <link>http://jdblack.github.io/website/</link>
+    <link>http://www.linuxguru.net/website/</link>
     <description>Recent content on DevOps Thoughts and Ruminations</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 29 Dec 2022 21:24:48 +0700</lastBuildDate><atom:link href="http://jdblack.github.io/website/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 29 Dec 2022 21:24:48 +0700</lastBuildDate><atom:link href="http://www.linuxguru.net/website/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>How to Contact Me</title>
-      <link>http://jdblack.github.io/website/contact/</link>
+      <link>http://www.linuxguru.net/website/contact/</link>
       <pubDate>Thu, 29 Dec 2022 21:27:29 +0700</pubDate>
       
-      <guid>http://jdblack.github.io/website/contact/</guid>
+      <guid>http://www.linuxguru.net/website/contact/</guid>
       <description> one of my email addresses On FB I am tehjaydeebee I am jdblack on Github jblackwb on reddit </description>
     </item>
     
     <item>
       <title>Welcome</title>
-      <link>http://jdblack.github.io/website/post/welcome/</link>
+      <link>http://www.linuxguru.net/website/post/welcome/</link>
       <pubDate>Thu, 29 Dec 2022 21:24:48 +0700</pubDate>
       
-      <guid>http://jdblack.github.io/website/post/welcome/</guid>
+      <guid>http://www.linuxguru.net/website/post/welcome/</guid>
       <description>Welcome!</description>
     </item>
     
