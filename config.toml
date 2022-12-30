@@ -3,6 +3,10 @@ languageCode = 'en-us'
 title = 'DevOps Thoughts and Ruminations'
 theme = 'blackburn'
 publishDir = "docs"
+
+[params]
+ custom_css = [ "/custom.css" ]
+
 [menu]
   # Shown in the side menu.
   [[menu.main]]
