@@ -8,6 +8,16 @@
     <language>en-us</language>
     <lastBuildDate>Thu, 29 Dec 2022 21:24:48 +0700</lastBuildDate><atom:link href="http://www.linuxguru.net/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>A little about me</title>
+      <link>http://www.linuxguru.net/about/</link>
+      <pubDate>Fri, 30 Dec 2022 13:02:38 +0700</pubDate>
+      
+      <guid>http://www.linuxguru.net/about/</guid>
+      <description>My life of nerdom started when a friend&amp;rsquo;s father brougth home a teensy little Timex Sinclair 1000. The machine weighted in at 2 kilobytes of ram and had a screen that was 32x24 characters. I only had a few opportunities to play with it, but I was already hooked.
+Timex Sinclair 1000 </description>
+    </item>
+    
+    <item>
       <title>How to Contact Me</title>
       <link>http://www.linuxguru.net/contact/</link>
       <pubDate>Thu, 29 Dec 2022 21:27:29 +0700</pubDate>

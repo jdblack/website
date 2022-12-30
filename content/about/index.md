@@ -1,7 +1,6 @@
 ---
 title: "A little about me"
 date: 2022-12-30T13:02:38+07:00
-draft: true
 ---
 
 My life of nerdom started when a friend's father brougth home a teensy little
