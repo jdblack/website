@@ -7,6 +7,11 @@ publishDir = "docs"
 [params]
  custom_css = [ "/custom.css" ]
 
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+       unsafe = true
+
 [menu]
   # Shown in the side menu.
   [[menu.main]]
