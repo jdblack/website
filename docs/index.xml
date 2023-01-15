@@ -2,35 +2,36 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>DevOps Thoughts and Ruminations</title>
-    <link>http://www.linuxguru.net/</link>
+    <link>/</link>
     <description>Recent content on DevOps Thoughts and Ruminations</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 29 Dec 2022 21:24:48 +0700</lastBuildDate><atom:link href="http://www.linuxguru.net/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 29 Dec 2022 21:24:48 +0700</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>A little about me</title>
-      <link>http://www.linuxguru.net/about/</link>
-      <pubDate>Fri, 30 Dec 2022 13:02:38 +0700</pubDate>
+      <link>/about/</link>
+      <pubDate>Fri, 30 Dec 2022 00:00:00 +0000</pubDate>
       
-      <guid>http://www.linuxguru.net/about/</guid>
-      <description> Hello, My name is James! By trade, and by heart, I&amp;rsquo;m a devops engineer. I have lived in a lot of places, but these days, I call Vietnam home. My nedlife started when a friend&amp;rsquo;s father brought home a teensy little computer named the Timex Sinclair 1000. characters. My opportunities with the machime were quite limited, but I was hooked. Within a year, I had my own computer, a Tandy Color Computer 2, known fondly as a &amp;ldquo;Trash 80&amp;rdquo; Tandy Color Computer 2 </description>
+      <guid>/about/</guid>
+      <description>Hello, My name is James! By trade, and by heart, I&amp;rsquo;m a devops engineer. I have lived in a lot of places, but these days, I call Vietnam home.
+Tandy Color Computer 2 My nerdlife started when a friend&amp;rsquo;s father brought home a teensy little computer named the Timex Sinclair 1000. characters. My opportunities with the machime were quite limited, but I was hooked. Within a year, I had my own computer, a Tandy Color Computer 2, known fondly as a &amp;ldquo;Trash 80&amp;rdquo; </description>
     </item>
     
     <item>
       <title>How to Contact Me</title>
-      <link>http://www.linuxguru.net/contact/</link>
+      <link>/contact/</link>
       <pubDate>Thu, 29 Dec 2022 21:27:29 +0700</pubDate>
       
-      <guid>http://www.linuxguru.net/contact/</guid>
+      <guid>/contact/</guid>
       <description>one of my email addresses On FB I am tehjaydeebee jblackwb on reddit I am jdblack on Github My resume A quick word about time zones These days I live in Hồ Chí Minh City, Vientam, also known as Saigon. Because of this, the time for me is 12-15 hours ahead of America. In other words, I&amp;rsquo;m usually heading to bed just as you&amp;rsquo;re waking up.</description>
     </item>
     
     <item>
       <title>Welcome</title>
-      <link>http://www.linuxguru.net/post/welcome/</link>
+      <link>/post/welcome/</link>
       <pubDate>Thu, 29 Dec 2022 21:24:48 +0700</pubDate>
       
-      <guid>http://www.linuxguru.net/post/welcome/</guid>
+      <guid>/post/welcome/</guid>
       <description>Welcome!</description>
     </item>
     

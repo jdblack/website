@@ -1,42 +1,97 @@
-baseURL = 'http://www.linuxguru.net/'
+baseURL = '/'
 languageCode = 'en-us'
 title = 'DevOps Thoughts and Ruminations'
-theme = 'blackburn'
+theme = 'mainroad'
 publishDir = "docs"
 
-[params]
- custom_css = [ "/custom.css" ]
+[markup.goldmark.renderer]
+unsafe = true
 
-[markup]
-  [markup.goldmark]
-    [markup.goldmark.renderer]
-       unsafe = true
+[Author]
+  name = "James Blackwell"
+  bio = "Making stuff that makes stuff"
+  avatar = "img/me.png"
 
-[menu]
-  # Shown in the side menu.
-  [[menu.main]]
-    name = "Home"
-    pre = "<i class='fa fa-home fa-fw'></i>"
-    weight = 1
-    identifier = "home"
-    url = "/"
-  [[menu.main]]
-    name = "Posts"
-    pre = "<i class='fa fa-list fa-fw'></i>"
-    weight = 2
-    identifier = "post"
-    url = "/post/"
-  [[menu.main]]
-    name = "About"
-    pre = "<i class='fa fa-user fa-fw'></i>"
-    weight = 3
-    identifier = "about"
-    url = "/about/"
-  [[menu.main]]
-    name = "Contact"
-    pre = "<i class='fa fa-phone fa-fw'></i>"
-    weight = 4
-    url = "/contact/"
+[Params]
+ description = "John Doe's Personal blog about everything" # Site description. Used in meta description
+  copyright = "John Doe" # Footer copyright holder, otherwise will use site title
+  opengraph = true # Enable OpenGraph if true
+  schema = true # Enable Schema
+  twitter_cards = false # Enable Twitter Cards if true
+  readmore = false # Show "Read more" button in list if true
+  authorbox = false # Show authorbox at bottom of pages if true
+  toc = true # Enable Table of Contents
+  pager = true # Show pager navigation (prev/next links) at the bottom of pages if true
+  post_meta = ["author", "date", "categories", "translations"] # Order of post meta information
+  mainSections = ["post", "blog", "news"] # Specify section pages to show on home page and the "Recent articles" widget
+  dateformat = "2006-01-02" # Change the format of dates
+  mathjax = true # Enable MathJax
+  mathjaxPath = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js" # Specify MathJax path
+  mathjaxConfig = "TeX-AMS-MML_HTMLorMML" # Specify MathJax config
+  googleFontsLink = "https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700" # Load Google Fonts
+  customCSS = ["css/custom.css"] # Include custom CSS files
+  customJS = ["js/custom.js"] # Include custom JS files
+
+[Params.style.vars]
+  highlightColor = "#e22d30" # Override highlight color
+
+  # Override font-family sets
+  # Take care of different quotes OR escaping symbols in these params if necessary
+  fontFamilyPrimary = "'Open Sans', Helvetica, Arial, sans-serif"
+  # Secondary font-family set responsible for pre, code, kbd, and samp tags font
+  fontFamilySecondary = "SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace"
+
+[Params.logo]
+  image = "img/me.png" # Logo image. Path relative to "static"
+  title = "DevOpped!" # Logo title, otherwise will use site title
+  subtitle = "Thoughts and Ruminations from the world of Devops"
+
+[Params.widgets]
+  recent_num = 5 # Set the number of articles in the "Recent articles" widget
+  categories_counter = false # Enable counter for each category in "Categories" widget
+  tags_counter = false # Enable counter for each tag in "Tags" widget
+
+[Params.widgets.social]
+  # Enable parts of social widget
+  facebook = "tehjaydeebee"
+  twitter = "j_wb"
+#  instagram = "username"
+  linkedin = "tehjaydeebee"
+#  telegram = "username"
+  github = "jdblack"
+#  gitlab = "username"
+#  bitbucket = "username"
+  email = "jblack@linuxguru.net"
+
+[Params.thumbnail]
+  visibility = ["list", "post"] # Control thumbnail visibility
+
+[Params.sidebar]
+  home = "right" # Configure layout for home page
+  list = "left"  # Configure layout for list pages
+  single = false # Configure layout for single pages
+  # Enable widgets in given order
+#  widgets = ["search", "recent", "categories", "taglist", "social", "languages"]
+  widgets = ["search" , "recent", "categories", "taglist", "languages", "social"]
 
 
+#[[Params.widgets.social.custom]]
+#  title = "Youtube"
+#  url = "https://www.youtube.com/@jblacktube"
+#  icon = "youtube.svg" # Optional. Path relative to "layouts/partials"
+#  rel = "noopener noreferrer" # Set to false to remove the rel attribute
+
+[[Params.widgets.social.custom]]
+  title = "About me"
+  url = "about"
+
+[Params.widgets.search]
+  url = "https://google.com/search"
+  [Params.widgets.search.input]
+    name = "sitesearch"
+    pre = ""
+
+[[Params.widgets.social.custom]]
+  title = "My Resume"
+  url = "https://for-your-perusal.s3.amazonaws.com/JamesBlackwell.Resume.pdf"
 
