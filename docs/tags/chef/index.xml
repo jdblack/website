@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>chef on DevOps Thoughts and Ruminations</title>
-    <link>/tags/chef/</link>
+    <link>https://www.linuxguru.net/tags/chef/</link>
     <description>Recent content in chef on DevOps Thoughts and Ruminations</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 16 Jan 2023 15:27:28 +0700</lastBuildDate><atom:link href="/tags/chef/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 16 Jan 2023 15:27:28 +0700</lastBuildDate><atom:link href="https://www.linuxguru.net/tags/chef/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Clustering cinc or chef Part 1</title>
-      <link>/post/clustering_cinc/</link>
+      <link>https://www.linuxguru.net/post/clustering_cinc/</link>
       <pubDate>Mon, 16 Jan 2023 15:27:28 +0700</pubDate>
       
-      <guid>/post/clustering_cinc/</guid>
+      <guid>https://www.linuxguru.net/post/clustering_cinc/</guid>
       <description>&lt;p&gt;This article is the first of a series about setting up Cinc or Chef as as a
 horizontally scalable service. This first post introduces the concept of which
 parts of the service need to be broken out to provide for a cluster.&lt;/p&gt;</description>

@@ -2,35 +2,35 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on DevOps Thoughts and Ruminations</title>
-    <link>/tags/</link>
+    <link>https://www.linuxguru.net/tags/</link>
     <description>Recent content in Tags on DevOps Thoughts and Ruminations</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 16 Jan 2023 15:27:28 +0700</lastBuildDate><atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 16 Jan 2023 15:27:28 +0700</lastBuildDate><atom:link href="https://www.linuxguru.net/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>chef</title>
-      <link>/tags/chef/</link>
+      <link>https://www.linuxguru.net/tags/chef/</link>
       <pubDate>Mon, 16 Jan 2023 15:27:28 +0700</pubDate>
       
-      <guid>/tags/chef/</guid>
+      <guid>https://www.linuxguru.net/tags/chef/</guid>
       <description></description>
     </item>
     
     <item>
       <title>cinc</title>
-      <link>/tags/cinc/</link>
+      <link>https://www.linuxguru.net/tags/cinc/</link>
       <pubDate>Mon, 16 Jan 2023 15:27:28 +0700</pubDate>
       
-      <guid>/tags/cinc/</guid>
+      <guid>https://www.linuxguru.net/tags/cinc/</guid>
       <description></description>
     </item>
     
     <item>
       <title>config management</title>
-      <link>/tags/config-management/</link>
+      <link>https://www.linuxguru.net/tags/config-management/</link>
       <pubDate>Mon, 16 Jan 2023 15:27:28 +0700</pubDate>
       
-      <guid>/tags/config-management/</guid>
+      <guid>https://www.linuxguru.net/tags/config-management/</guid>
       <description></description>
     </item>
     

@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>DevOps Thoughts and Ruminations</title>
-    <link>/</link>
+    <link>https://www.linuxguru.net/</link>
     <description>Recent content on DevOps Thoughts and Ruminations</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 16 Jan 2023 15:27:28 +0700</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 16 Jan 2023 15:27:28 +0700</lastBuildDate><atom:link href="https://www.linuxguru.net/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Projects</title>
-      <link>/projects/</link>
+      <link>https://www.linuxguru.net/projects/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/projects/</guid>
+      <guid>https://www.linuxguru.net/projects/</guid>
       <description>Current Projects Song of the Day Is a Slack bot written in golang to provide jukebox support to group channels
 MFA Is a small app for sytems to do totp keys (six digit mfa auth)
 chef_k8s_docker is docker container to run Chef Cinc as a scalable container.
@@ -22,20 +22,20 @@ k8s_tf An on-metal buildout of K8s including MetalLB, Cert-Manager, OpenEBS, int
     
     <item>
       <title>About me</title>
-      <link>/about/</link>
+      <link>https://www.linuxguru.net/about/</link>
       <pubDate>Fri, 30 Dec 2022 00:00:00 +0000</pubDate>
       
-      <guid>/about/</guid>
+      <guid>https://www.linuxguru.net/about/</guid>
       <description>Hello, My name is James! I&amp;rsquo;m a devops engineer by both trade and heart.
 Tandy CoCo 2 My nerdlife started when a friend&amp;rsquo;s father brought home a teensy little computer named the Timex Sinclair 1000. characters. My opportunities with the machine were limited, but I became quicly hooked. Within a few months, I had my own computer of my own, a Tandy Color Computer 2, also known as a CoCo2. These machines, sold at Radio Shack, were rather limited in nature, having sported 16K of ram, a 0.</description>
     </item>
     
     <item>
       <title>Clustering cinc or chef Part 1</title>
-      <link>/post/clustering_cinc/</link>
+      <link>https://www.linuxguru.net/post/clustering_cinc/</link>
       <pubDate>Mon, 16 Jan 2023 15:27:28 +0700</pubDate>
       
-      <guid>/post/clustering_cinc/</guid>
+      <guid>https://www.linuxguru.net/post/clustering_cinc/</guid>
       <description>&lt;p&gt;This article is the first of a series about setting up Cinc or Chef as as a
 horizontally scalable service. This first post introduces the concept of which
 parts of the service need to be broken out to provide for a cluster.&lt;/p&gt;</description>
@@ -43,10 +43,10 @@ parts of the service need to be broken out to provide for a cluster.&lt;/p&gt;</
     
     <item>
       <title>Welcome</title>
-      <link>/post/welcome/</link>
+      <link>https://www.linuxguru.net/post/welcome/</link>
       <pubDate>Thu, 29 Dec 2022 21:24:48 +0700</pubDate>
       
-      <guid>/post/welcome/</guid>
+      <guid>https://www.linuxguru.net/post/welcome/</guid>
       <description>Welcome!</description>
     </item>
     

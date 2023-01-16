@@ -1,4 +1,4 @@
-baseURL = '/'
+baseURL = 'https://www.linuxguru.net/'
 languageCode = 'en-us'
 title = 'DevOps Thoughts and Ruminations'
 theme = 'mainroad'
