@@ -3,6 +3,7 @@ languageCode = 'en-us'
 title = 'DevOps Thoughts and Ruminations'
 theme = 'mainroad'
 publishDir = "docs"
+googleAnalytics = "G-VTZZVQGDLY"
 
 [markup.goldmark.renderer]
 unsafe = true
