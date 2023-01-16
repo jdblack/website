@@ -13,8 +13,8 @@ unsafe = true
   avatar = "img/me.png"
 
 [Params]
- description = "John Doe's Personal blog about everything" # Site description. Used in meta description
-  copyright = "John Doe" # Footer copyright holder, otherwise will use site title
+  description = "Thoughts and Ruminations from the world of Devops"
+  copyright = "James Blackwell" # Footer copyright holder, otherwise will use site title
   opengraph = true # Enable OpenGraph if true
   schema = true # Enable Schema
   twitter_cards = false # Enable Twitter Cards if true
@@ -48,8 +48,8 @@ unsafe = true
 
 [Params.widgets]
   recent_num = 5 # Set the number of articles in the "Recent articles" widget
-  categories_counter = false # Enable counter for each category in "Categories" widget
-  tags_counter = false # Enable counter for each tag in "Tags" widget
+  categories_counter = true # Enable counter for each category in "Categories" widget
+  tags_counter = true # Enable counter for each tag in "Tags" widget
 
 [Params.widgets.social]
   # Enable parts of social widget
@@ -71,8 +71,7 @@ unsafe = true
   list = "left"  # Configure layout for list pages
   single = false # Configure layout for single pages
   # Enable widgets in given order
-#  widgets = ["search", "recent", "categories", "taglist", "social", "languages"]
-  widgets = ["search" , "recent", "categories", "taglist", "languages", "social"]
+  widgets = ["search" , "recent", "categories", "taglist", "social"]
 
 
 #[[Params.widgets.social.custom]]
