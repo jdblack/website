@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>config management on DevOps Thoughts and Ruminations</title>
+    <link>/categories/config-management/</link>
+    <description>Recent content in config management on DevOps Thoughts and Ruminations</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 16 Jan 2023 15:27:28 +0700</lastBuildDate><atom:link href="/categories/config-management/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Clustering_cinc</title>
+      <link>/posts/clustering_cinc/</link>
+      <pubDate>Mon, 16 Jan 2023 15:27:28 +0700</pubDate>
+      
+      <guid>/posts/clustering_cinc/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
