@@ -40,7 +40,7 @@ from the outside world by running openvpn inside your k8s infrastructure!
 - I was a core developer for both [GNU
   Arch](https://www.gnu.org/software/gnu-arch/) and
   [Bazaar](http://bazaar.canonical.com/en/), invented by Thomas Lord (rest in
-  peace), were two wof the earliest decentralized revision control systems.
+  peace), were two of the earliest decentralized revision control systems.
 
 
 - [The Linux Kernel](https://www.kernel.org/) with a teensy fix for toshiba laptops. 
