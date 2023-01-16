@@ -4,24 +4,24 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Clustering cinc or chef - DevOps Thoughts and Ruminations</title>
+	<title>Clustering cinc or chef Part 1 - DevOps Thoughts and Ruminations</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
-		<meta property="og:title" content="Clustering cinc or chef" />
-<meta property="og:description" content="Chef Cinc is surprisingly simple to set up, especially considering the amount of underlying complexity that is hidden from the user.
-# curl -L https://omnitruck.cinc.sh/install.sh | sudo bash -s -- -P cinc-server -v 14 # cinc-server-ctl reconfigure Sure enough, we have a brand new Chef Cinc server, ready to manage hundreds, or evne thousands of clients. It almost feels too easy, doesn&rsquo;t it?
-Let&rsquo;s take a look at what we have." />
+		<meta property="og:title" content="Clustering cinc or chef Part 1" />
+<meta property="og:description" content="This article is the first of a series about setting up Cinc or Chef as as a
+horizontally scalable service. This first post introduces the concept of which
+parts of the service need to be broken out to provide for a cluster." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/post/clustering_cinc/" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2023-01-16T15:27:28+07:00" />
 <meta property="article:modified_time" content="2023-01-16T15:27:28+07:00" />
 
-		<meta itemprop="name" content="Clustering cinc or chef">
-<meta itemprop="description" content="Chef Cinc is surprisingly simple to set up, especially considering the amount of underlying complexity that is hidden from the user.
-# curl -L https://omnitruck.cinc.sh/install.sh | sudo bash -s -- -P cinc-server -v 14 # cinc-server-ctl reconfigure Sure enough, we have a brand new Chef Cinc server, ready to manage hundreds, or evne thousands of clients. It almost feels too easy, doesn&rsquo;t it?
-Let&rsquo;s take a look at what we have."><meta itemprop="datePublished" content="2023-01-16T15:27:28+07:00" />
+		<meta itemprop="name" content="Clustering cinc or chef Part 1">
+<meta itemprop="description" content="This article is the first of a series about setting up Cinc or Chef as as a
+horizontally scalable service. This first post introduces the concept of which
+parts of the service need to be broken out to provide for a cluster."><meta itemprop="datePublished" content="2023-01-16T15:27:28+07:00" />
 <meta itemprop="dateModified" content="2023-01-16T15:27:28+07:00" />
-<meta itemprop="wordCount" content="470">
+<meta itemprop="wordCount" content="531">
 <meta itemprop="keywords" content="config management,chef,cinc," />
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
@@ -80,7 +80,7 @@ Let&rsquo;s take a look at what we have."><meta itemprop="datePublished" content
 <main class="main" role="main">
 	<article class="post">
 		<header class="post__header">
-			<h1 class="post__title">Clustering cinc or chef</h1>
+			<h1 class="post__title">Clustering cinc or chef Part 1</h1>
 			<div class="post__meta meta"><div class="meta__item-author meta__item">
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">James Blackwell</span>
 </div>
@@ -90,7 +90,10 @@ Let&rsquo;s take a look at what we have."><meta itemprop="datePublished" content
 </div></div>
 		</header>
 		<div class="content post__content clearfix">
-			<p><del>Chef</del> Cinc is surprisingly simple to set up, especially considering
+			<p>This article is the first of a series about setting up Cinc or Chef as as a
+horizontally scalable service. This first post introduces the concept of which
+parts of the service need to be broken out to provide for a cluster.</p>
+<p><del>Chef</del> Cinc is surprisingly simple to set up, especially considering
 the amount of underlying complexity that is hidden from the user.</p>
 <pre tabindex="0"><code># curl -L https://omnitruck.cinc.sh/install.sh | sudo bash -s -- -P cinc-server -v 14
 # cinc-server-ctl reconfigure
@@ -217,7 +220,8 @@ end
 </div>
 
 
-
+<p>In our next article, we will cover the basic configuration changes needed
+to externalize the Database and Search engine.</p>
 		</div>
 		<footer class="post__footer">
 			

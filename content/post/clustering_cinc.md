@@ -1,5 +1,5 @@
 ---
-title: "Clustering cinc or chef"
+title: "Clustering cinc or chef Part 1"
 date: 2023-01-16T15:27:28+07:00
 categories:
  - devops
@@ -8,6 +8,12 @@ tags:
  - chef
  - cinc
 ---
+
+This article is the first of a series about setting up Cinc or Chef as as a
+horizontally scalable service. This first post introduces the concept of which
+parts of the service need to be broken out to provide for a cluster.
+
+<!--more-->
 
 ~~Chef~~ Cinc is surprisingly simple to set up, especially considering
 the amount of underlying complexity that is hidden from the user.
@@ -114,4 +120,6 @@ opensearchLB-->opensearch3
 end
 {{</mermaid >}}
 
+In our next article, we will cover the basic configuration changes needed
+to externalize the Database and Search engine. 
 

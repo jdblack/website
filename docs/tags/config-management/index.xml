@@ -8,14 +8,14 @@
     <language>en-us</language>
     <lastBuildDate>Mon, 16 Jan 2023 15:27:28 +0700</lastBuildDate><atom:link href="/tags/config-management/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Clustering cinc or chef</title>
+      <title>Clustering cinc or chef Part 1</title>
       <link>/post/clustering_cinc/</link>
       <pubDate>Mon, 16 Jan 2023 15:27:28 +0700</pubDate>
       
       <guid>/post/clustering_cinc/</guid>
-      <description>Chef Cinc is surprisingly simple to set up, especially considering the amount of underlying complexity that is hidden from the user.
-# curl -L https://omnitruck.cinc.sh/install.sh | sudo bash -s -- -P cinc-server -v 14 # cinc-server-ctl reconfigure Sure enough, we have a brand new Chef Cinc server, ready to manage hundreds, or evne thousands of clients. It almost feels too easy, doesn&amp;rsquo;t it?
-Let&amp;rsquo;s take a look at what we have.</description>
+      <description>&lt;p&gt;This article is the first of a series about setting up Cinc or Chef as as a
+horizontally scalable service. This first post introduces the concept of which
+parts of the service need to be broken out to provide for a cluster.&lt;/p&gt;</description>
     </item>
     
   </channel>
