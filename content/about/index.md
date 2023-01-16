@@ -2,6 +2,7 @@
 title: "About me"
 description: "A little bit of the backstory of James Blackwell"
 date: "2022-12-30"
+type: page
 menu:
  - main
 ---
