@@ -1,0 +1,10 @@
+{{- $recent := where .Site.RegularPages "Type" "in" .Site.Params.mainSections }}
+{{- $recent_num := (.Site.Params.widgets.recent_num | default 10) }}
+
+<div class="widget-recent widget">
+	<h4 class="widget__title">The current time for James</h4>
+	<div class="widget__content">
+    <p class="time">.</p>
+		</ul>
+	</div>
+</div>

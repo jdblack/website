@@ -69,7 +69,7 @@ menu = [ "main" ]
   list = "right"  # Configure layout for list pages
   single = false # Configure layout for single pages
   # Enable widgets in given order
-  widgets = ["search" , "recent", "categories", "taglist", "social"]
+  widgets = ["time","social", "recent", "categories", "taglist", "search"]
 
 
 #[[Params.widgets.social.custom]]
