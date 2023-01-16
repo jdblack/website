@@ -1,12 +1,9 @@
 ---
-title: "A little about me"
+title: "About me"
 description: "A little bit of the backstory of James Blackwell"
 date: "2022-12-30"
-categories:
- - personal
-tags:
- - personal
- - history
+menu:
+ - main
 ---
 
 Hello, My name is James! I'm a devops engineer by both trade and heart.  
@@ -32,7 +29,7 @@ nature, having sported 16K of ram, a 0.896Mhz processor and a 32x16 text
 display.  Mine came with a tape drive that was horribly unreliable, but such
 were the times.  Within a couple years, I got my hands on a Commodore 64,
 started programming trivial little things, and even ran a BBS for a bit named
-the Hidden Alcove. 
+the Hidden Alcove. I miss you Fidonet,
 
 {{</column>}}
 {{</section>}}
@@ -43,17 +40,18 @@ I joined the military shotly after high school, where I learned electronics,
 radio & radar and other such skills as would befit someone focused on Naval
 Weapon systems. At the time, I couldn't stand the experience, but my fondness
 for this time period has grown over time. Thanks to the Navy, I had the chance
-to see half a dozen countries before I could legally drink in my own country! I
-built a family while in the Navy
+to see half a dozen countries before I could legally drink in my own country!
 
-
+Onboard ship, I eventually ended up in the Computer repair shop. There, I managed
+a Netware 3.11 network and learned to work with X86. At home, I went from DOS, 
+to OS/2 Warp, eventaully migrating to Slackware 3.0. The ability to run my own
+web and mailservers was intoxicating, and I became hooked for life.
 
 {{</column>}}
 {{<column>}}
-
 {{< figure src="https://upload.wikimedia.org/wikipedia/commons/4/4f/USS_Cape_Cod_%28AD-43%29_underway_in_San_Francisco_Bay_%28USA%29%2C_circa_in_the_1980s.jpg" title="Cape Cod AD-43"
 link="https://en.wikipedia.org/wiki/USS_Cape_Cod_%28AD-43%29" width=600px >}}
-
+{{< figure src="4dcomm.png" title="My first subdomain" width=600px >}}
 
 {{</column>}}
 {{</section>}}

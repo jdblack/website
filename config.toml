@@ -7,6 +7,8 @@ publishDir = "docs"
 [markup.goldmark.renderer]
 unsafe = true
 
+menu = [ "main" ]
+
 [Author]
   name = "James Blackwell"
   bio = "Making stuff that makes stuff"
@@ -55,12 +57,8 @@ unsafe = true
   # Enable parts of social widget
   facebook = "tehjaydeebee"
   twitter = "j_wb"
-#  instagram = "username"
   linkedin = "tehjaydeebee"
-#  telegram = "username"
   github = "jdblack"
-#  gitlab = "username"
-#  bitbucket = "username"
   email = "jblack@linuxguru.net"
 
 [Params.thumbnail]
@@ -68,7 +66,7 @@ unsafe = true
 
 [Params.sidebar]
   home = "right" # Configure layout for home page
-  list = "left"  # Configure layout for list pages
+  list = "right"  # Configure layout for list pages
   single = false # Configure layout for single pages
   # Enable widgets in given order
   widgets = ["search" , "recent", "categories", "taglist", "social"]
@@ -80,10 +78,6 @@ unsafe = true
 #  icon = "youtube.svg" # Optional. Path relative to "layouts/partials"
 #  rel = "noopener noreferrer" # Set to false to remove the rel attribute
 
-[[Params.widgets.social.custom]]
-  title = "About me"
-  url = "about"
-
 [Params.widgets.search]
   url = "https://google.com/search"
   [Params.widgets.search.input]
@@ -93,4 +87,5 @@ unsafe = true
 [[Params.widgets.social.custom]]
   title = "My Resume"
   url = "https://for-your-perusal.s3.amazonaws.com/JamesBlackwell.Resume.pdf"
+  icon = "resume.svg"
 
