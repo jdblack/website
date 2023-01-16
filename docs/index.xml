@@ -8,6 +8,19 @@
     <language>en-us</language>
     <lastBuildDate>Thu, 29 Dec 2022 21:24:48 +0700</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Projects</title>
+      <link>/projects/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/projects/</guid>
+      <description>Current Projects Song of the Day Is a Slack bot written in golang to provide jukebox support to group channels
+MFA Is a small app for sytems to do totp keys (six digit mfa auth)
+chef_k8s_docker is docker container to run Chef Cinc as a scalable container.
+openvpn_k8s Access your local network from the outside world by running openvpn inside your k8s infrastructure!
+k8s_tf An on-metal buildout of K8s including MetalLB, Cert-Manager, OpenEBS, internal docker registry and a fully scaleable Chef Cinc</description>
+    </item>
+    
+    <item>
       <title>About me</title>
       <link>/about/</link>
       <pubDate>Fri, 30 Dec 2022 00:00:00 +0000</pubDate>
@@ -15,15 +28,6 @@
       <guid>/about/</guid>
       <description>Hello, My name is James! I&amp;rsquo;m a devops engineer by both trade and heart.
 Tandy CoCo 2 My nerdlife started when a friend&amp;rsquo;s father brought home a teensy little computer named the Timex Sinclair 1000. characters. My opportunities with the machine were limited, but I became quicly hooked. Within a few months, I had my own computer of my own, a Tandy Color Computer 2, also known as a CoCo2. These machines, sold at Radio Shack, were rather limited in nature, having sported 16K of ram, a 0.</description>
-    </item>
-    
-    <item>
-      <title>How to Contact Me</title>
-      <link>/contact/</link>
-      <pubDate>Thu, 29 Dec 2022 21:27:29 +0700</pubDate>
-      
-      <guid>/contact/</guid>
-      <description>one of my email addresses On FB I am tehjaydeebee jblackwb on reddit I am jdblack on Github My resume A quick word about time zones These days I live in Hồ Chí Minh City, Vientam, also known as Saigon. Because of this, the time for me is 12-15 hours ahead of America. In other words, I&amp;rsquo;m usually heading to bed just as you&amp;rsquo;re waking up.</description>
     </item>
     
     <item>

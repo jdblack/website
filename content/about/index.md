@@ -3,6 +3,7 @@ title: "About me"
 description: "A little bit of the backstory of James Blackwell"
 date: "2022-12-30"
 type: page
+weight: 99
 menu:
  - main
 ---
@@ -30,7 +31,7 @@ nature, having sported 16K of ram, a 0.896Mhz processor and a 32x16 text
 display.  Mine came with a tape drive that was horribly unreliable, but such
 were the times.  Within a couple years, I got my hands on a Commodore 64,
 started programming trivial little things, and even ran a BBS for a bit named
-the Hidden Alcove. I miss you Fidonet,
+the Hidden Alcove. I miss you Fidonet....
 
 {{</column>}}
 {{</section>}}
