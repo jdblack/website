@@ -7,7 +7,6 @@ tags:
  - config management
  - chef
  - cinc
-draft: true
 ---
 
 ~~Chef~~ Cinc is surprisingly simple to set up, especially considering

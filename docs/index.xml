@@ -6,7 +6,7 @@
     <description>Recent content on DevOps Thoughts and Ruminations</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 29 Dec 2022 21:24:48 +0700</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 16 Jan 2023 15:27:28 +0700</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Projects</title>
       <link>/projects/</link>
@@ -28,6 +28,17 @@ k8s_tf An on-metal buildout of K8s including MetalLB, Cert-Manager, OpenEBS, int
       <guid>/about/</guid>
       <description>Hello, My name is James! I&amp;rsquo;m a devops engineer by both trade and heart.
 Tandy CoCo 2 My nerdlife started when a friend&amp;rsquo;s father brought home a teensy little computer named the Timex Sinclair 1000. characters. My opportunities with the machine were limited, but I became quicly hooked. Within a few months, I had my own computer of my own, a Tandy Color Computer 2, also known as a CoCo2. These machines, sold at Radio Shack, were rather limited in nature, having sported 16K of ram, a 0.</description>
+    </item>
+    
+    <item>
+      <title>Clustering cinc or chef</title>
+      <link>/post/clustering_cinc/</link>
+      <pubDate>Mon, 16 Jan 2023 15:27:28 +0700</pubDate>
+      
+      <guid>/post/clustering_cinc/</guid>
+      <description>Chef Cinc is surprisingly simple to set up, especially considering the amount of underlying complexity that is hidden from the user.
+# curl -L https://omnitruck.cinc.sh/install.sh | sudo bash -s -- -P cinc-server -v 14 # cinc-server-ctl reconfigure Sure enough, we have a brand new Chef Cinc server, ready to manage hundreds, or evne thousands of clients. It almost feels too easy, doesn&amp;rsquo;t it?
+Let&amp;rsquo;s take a look at what we have.</description>
     </item>
     
     <item>

@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Clustering cinc or chef - DevOps Thoughts and Ruminations</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+		<meta property="og:title" content="Clustering cinc or chef" />
+<meta property="og:description" content="Chef Cinc is surprisingly simple to set up, especially considering the amount of underlying complexity that is hidden from the user.
+# curl -L https://omnitruck.cinc.sh/install.sh | sudo bash -s -- -P cinc-server -v 14 # cinc-server-ctl reconfigure Sure enough, we have a brand new Chef Cinc server, ready to manage hundreds, or evne thousands of clients. It almost feels too easy, doesn&rsquo;t it?
+Let&rsquo;s take a look at what we have." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/clustering_cinc/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2023-01-16T15:27:28+07:00" />
+<meta property="article:modified_time" content="2023-01-16T15:27:28+07:00" />
+
+		<meta itemprop="name" content="Clustering cinc or chef">
+<meta itemprop="description" content="Chef Cinc is surprisingly simple to set up, especially considering the amount of underlying complexity that is hidden from the user.
+# curl -L https://omnitruck.cinc.sh/install.sh | sudo bash -s -- -P cinc-server -v 14 # cinc-server-ctl reconfigure Sure enough, we have a brand new Chef Cinc server, ready to manage hundreds, or evne thousands of clients. It almost feels too easy, doesn&rsquo;t it?
+Let&rsquo;s take a look at what we have."><meta itemprop="datePublished" content="2023-01-16T15:27:28+07:00" />
+<meta itemprop="dateModified" content="2023-01-16T15:27:28+07:00" />
+<meta itemprop="wordCount" content="470">
+<meta itemprop="keywords" content="config management,chef,cinc," />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="/css/custom.css">
+
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container header__container">
+		
+	<div class="logo logo--mixed">
+		<a class="logo__link" href="/" title="DevOpped!" rel="home">
+			<div class="logo__item logo__imagebox">
+					<img class="logo__img" src="/img/me.png">
+				</div><div class="logo__item logo__text">
+					<div class="logo__title">DevOpped!</div>
+					<div class="logo__tagline">Thoughts and Ruminations from the world of Devops</div>
+				</div>
+		</a>
+	</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="/projects/">
+				
+				<span class="menu__text">Projects</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/about/">
+				
+				<span class="menu__text">About me</span>
+				
+			</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">Clustering cinc or chef</h1>
+			<div class="post__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">James Blackwell</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2023-01-16T15:27:28&#43;07:00">2023-01-16</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/devops/" rel="category">devops</a>
+	</span>
+</div></div>
+		</header>
+		<div class="content post__content clearfix">
+			<p><del>Chef</del> Cinc is surprisingly simple to set up, especially considering
+the amount of underlying complexity that is hidden from the user.</p>
+<pre tabindex="0"><code># curl -L https://omnitruck.cinc.sh/install.sh | sudo bash -s -- -P cinc-server -v 14
+# cinc-server-ctl reconfigure
+ 
+</code></pre><p>Sure enough, we have a brand new <del>Chef</del> Cinc server, ready to manage
+hundreds, or evne thousands of clients. It almost feels too easy, doesn&rsquo;t
+it?</p>
+<p>Let&rsquo;s take a look at what we have..</p>
+<script async type="application/javascript" src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js">
+  var config = {
+    startOnLoad:true,
+    theme:'dark',
+    align:'center'
+  };
+  mermaid.initialize(config);
+</script>
+
+<div class="mermaid">
+  
+flowchart LR
+clients[/cinc clients/]-->cinc[api server]
+subgraph Standalone Chef
+cinc-->postgres
+cinc-->opensearch
+cinc-->others(and a slew of other services)
+end
+
+</div>
+
+
+<p>From our perspective, it&rsquo;s just a <del>Chef</del> Cinc server, taking and
+serving request. Under the blankets, though, there&rsquo;s a bit more to it.
+Things, at least at first, are just fine!</p>
+<p>As time passes, it becomes more clear that our entire infrastructure is
+dependent upon that server never, ever going down.  Something as simple as a
+kernel upgrade on your <del>Chef</del> Cinc server often causes the entire
+organization to become rudderless. Your organization loses the ability to scale
+new app servers, becuase chef is down. SecOps become rudderless, as they lose
+the ability to patch zero days, because the <del>chef</del> cinc server is down.
+Tools that rely upon inventory management lose the ability to watch systems.
+It can get ugly.  Its our responsibility to avoid single points of failure like
+these.</p>
+<p>There is thankfully a process by which we can run as many <del>chef</del> cinc servers
+as we want!  The api server itself is stateless and we can run as many of them
+as we want, as long as we externalize the Postgres Database and Opensearch
+Cluster. The rest of the stuff, nginx, reddis, rabbitmq can stay right
+where it is.</p>
+<script async type="application/javascript" src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js">
+  var config = {
+    startOnLoad:true,
+    theme:'dark',
+    align:'center'
+  };
+  mermaid.initialize(config);
+</script>
+
+<div class="mermaid">
+  
+flowchart LR
+clients[/cinc clients/]-->cinclb
+cinclb-->cinc1
+cinclb-->cinc2
+subgraph DB
+postgres
+end
+subgraph cluster[Cinc Cluster]
+cinclb>load balancer]
+cinc1[api server 1]
+cinc2[api server ..n]
+end
+subgraph Search
+opensearch
+end
+cluster-->opensearch
+cluster-->postgres
+
+</div>
+
+
+<p>Things are slightly more complicated then the above chart, but not by
+very much.  Firstly, redundancy for the database server must be addressed,
+either by using Amazon RDS in multi-az mode (which will handle all failover
+for you), or manually setting up some sort of replication and failover
+process with the database server.</p>
+<p>Setting up redundancy with opensearch is less important, as the data can be
+regenerated at any time by running &ldquo;cinc-server-ctl reindex&rdquo; on any of the cinc
+api servers. That said, setting up replication for Opensearch is rather easy
+and should be done if you have the money to cover the cost three systems.</p>
+<p>RDS and amazon OpenSearch can handle that redundancy for you, but if you want
+to build a fully redundant architecture build-it-my-own-self style, you&rsquo;re
+looking at the following:</p>
+<script async type="application/javascript" src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js">
+  var config = {
+    startOnLoad:true,
+    theme:'dark',
+    align:'center'
+  };
+  mermaid.initialize(config);
+</script>
+
+<div class="mermaid">
+  
+flowchart LR
+clients(cinc clients)-->cinclb
+subgraph CincAPI
+cinclb>Cinc LB]
+cinclb-->cinc1[api server 1]
+cinclb-->cinc2[api server ..n]
+end
+CincAPI-->heartbeat
+CincAPI-->opensearchLB
+subgraph DB
+heartbeat>heartbeat]
+heartbeat<-->postgresPrimary
+heartbeat<-->postgresSecondary
+end
+subgraph Search
+opensearchLB>OpenSearchLB]
+opensearchLB-->opensearch1
+opensearchLB-->opensearch2
+opensearchLB-->opensearch3
+end
+
+</div>
+
+
+
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/config-management/" rel="tag">config management</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/chef/" rel="tag">chef</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/cinc/" rel="tag">cinc</a>
+		</li>
+	</ul>
+</div>
+		</footer>
+	</article>
+</main>
+
+
+<nav class="pager flex">
+	<div class="pager__item pager__item--prev">
+		<a class="pager__link" href="/post/welcome/" rel="prev">
+			<span class="pager__subtitle">«&thinsp;Previous</span>
+			<p class="pager__title">Welcome</p>
+		</a>
+	</div>
+</nav>
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2023 James Blackwell.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
+<script src="/js/custom.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async></script>
+</body>
+</html>

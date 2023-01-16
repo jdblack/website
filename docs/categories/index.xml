@@ -5,6 +5,16 @@
     <link>/categories/</link>
     <description>Recent content in Categories on DevOps Thoughts and Ruminations</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language><atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" />
+    <language>en-us</language>
+    <lastBuildDate>Mon, 16 Jan 2023 15:27:28 +0700</lastBuildDate><atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>devops</title>
+      <link>/categories/devops/</link>
+      <pubDate>Mon, 16 Jan 2023 15:27:28 +0700</pubDate>
+      
+      <guid>/categories/devops/</guid>
+      <description></description>
+    </item>
+    
   </channel>
 </rss>
