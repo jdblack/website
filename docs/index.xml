@@ -6,7 +6,7 @@
     <description>Recent content on DevOps Thoughts and Ruminations</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 16 Jan 2023 15:27:28 +0700</lastBuildDate><atom:link href="https://www.linuxguru.net/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 09 Feb 2023 12:25:05 +0700</lastBuildDate><atom:link href="https://www.linuxguru.net/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Projects</title>
       <link>https://www.linuxguru.net/projects/</link>
@@ -28,6 +28,16 @@ k8s_tf An on-metal buildout of K8s including MetalLB, Cert-Manager, OpenEBS, int
       <guid>https://www.linuxguru.net/about/</guid>
       <description>Hello, My name is James! I&amp;rsquo;m a devops engineer by both trade and heart.
 Tandy CoCo 2 My nerdlife started when a friend&amp;rsquo;s father brought home a teensy little computer named the Timex Sinclair 1000. characters. My opportunities with the machine were limited, but I became quicly hooked. Within a few months, I had my own computer of my own, a Tandy Color Computer 2, also known as a CoCo2. These machines, sold at Radio Shack, were rather limited in nature, having sported 16K of ram, a 0.</description>
+    </item>
+    
+    <item>
+      <title>Ceph in K8s</title>
+      <link>https://www.linuxguru.net/notes/ceph_in_k8s/</link>
+      <pubDate>Thu, 09 Feb 2023 12:25:05 +0700</pubDate>
+      
+      <guid>https://www.linuxguru.net/notes/ceph_in_k8s/</guid>
+      <description>&lt;p&gt;My raw notes on installing ceph in K8s. This information is exploratory in
+nature and should not be relied on in production enviornments&lt;/p&gt;</description>
     </item>
     
     <item>

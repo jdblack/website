@@ -1,1 +1,3 @@
-<div class="column">{{.Inner | markdownify}}</div>
+<div class="column" {{ if (.Get "width") }} style="column-width:{{.Get "width"}}"{{ end }} >{{.Inner | markdownify}}</div>
+
+

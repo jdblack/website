@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>k8s on DevOps Thoughts and Ruminations</title>
+    <link>https://www.linuxguru.net/tags/k8s/</link>
+    <description>Recent content in k8s on DevOps Thoughts and Ruminations</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 09 Feb 2023 12:25:05 +0700</lastBuildDate><atom:link href="https://www.linuxguru.net/tags/k8s/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Ceph in K8s</title>
+      <link>https://www.linuxguru.net/notes/ceph_in_k8s/</link>
+      <pubDate>Thu, 09 Feb 2023 12:25:05 +0700</pubDate>
+      
+      <guid>https://www.linuxguru.net/notes/ceph_in_k8s/</guid>
+      <description>&lt;p&gt;My raw notes on installing ceph in K8s. This information is exploratory in
+nature and should not be relied on in production enviornments&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
