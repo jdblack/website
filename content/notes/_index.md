@@ -14,7 +14,7 @@ progress. The information presented below is _probably_ useful but also
 internet, especially this!
 {{</column>}}
 {{<column>}}
-![Dumpster Fire](DumpsterFire.jpg)
+{{< figure src="img/DumpsterFire.jpg" title="any new project">}}
 {{</column>}}
 
 

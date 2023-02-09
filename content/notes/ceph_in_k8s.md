@@ -1,6 +1,7 @@
 ---
 title: "Ceph in K8s"
 date: 2023-02-09T12:25:05+07:00
+toc: false
 categories:
  - notes
  - underway
@@ -8,6 +9,7 @@ tags:
  - k8s
  - ceph
 ---
+
 
 In this note, I cover the details that I have uncovered thus far with rook and
 ceph.  Ceph is a distributed filesystem that provides persistent storage,
@@ -19,6 +21,15 @@ So far, the experience is quite challenging. Here is what I've pieced together
 thus far.
 
 <!--more-->
+{{<section>}}
+{{<column width="60em">}}
+{{< toc >}}
+{{</column>}}
+{{<column width="40em">}}
+{{< figure src="../ceph/harder.jpg" title="first ceph experiences" width=320 >}}
+{{</column>}}
+{{</section>}}
+
 
 
 ## Installation
@@ -85,12 +96,16 @@ Labels:       kubernetes.io/metadata.name=rook-ceph
 Annotations:  <none>
 Status:       Terminating
 Conditions:
-  Type                                   Status  LastTransitionTime               Reason                Message
-  ----                                         ------  ------------------               ------                -------
+ Type        Status  LastTransitionTime  Reason      Message
+ ----        ------  ------------------  ------      -------
+ Namespace   True    09 Feb  13:21:16    Some        Some content in the namespace has finalizers remaining:
+ Finalizers                              Finalizers  cephblockpool.ceph.rook.io in 1 resource instances,
+ Remaining                               Remain      cephobjectstore.ceph.rook.io in 1 resource instances
+```
 
-  NamespaceFinalizersRemaining                 True    Thu, 09 Feb 2023 13:21:16 +0700  SomeFinalizersRemain  Some content in the namespace has finalizers remaining: cephblockpool.ceph.rook.io in 1 resource instances, cephobjectstore.ceph.rook.io in 1 resource instances
-
-
+For example, do a `kubectl get cephblockpool -n rook-ceph`, which will show the
+remaining block pool. `kubectl edit` that, remove  the Finalizers stanza, and
+you're good to go.
 
 
 ### Clean up nodes
@@ -107,7 +122,8 @@ These actions have to performed on all nodes:
     count=10240`
 
 For me, that looks like:
-```
+
+```shell
 for x in k8smaster k8sn1 k8sn2 k8sn3; do
    ssh $x "sudo rm -rf /var/lib/rook";
    ssh $x "sudo dd if=/dev/zero of/dev/dm-1 bs=4096 count=10240";

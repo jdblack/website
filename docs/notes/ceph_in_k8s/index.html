@@ -29,7 +29,7 @@ Ceph much easier.
 So far, the experience is quite challenging. Here is what I&rsquo;ve pieced together
 thus far."><meta itemprop="datePublished" content="2023-02-09T12:25:05+07:00" />
 <meta itemprop="dateModified" content="2023-02-09T12:25:05+07:00" />
-<meta itemprop="wordCount" content="482">
+<meta itemprop="wordCount" content="535">
 <meta itemprop="keywords" content="k8s,ceph," />
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
@@ -115,11 +115,18 @@ if (!doNotTrack) {
 	</span>
 </div></div>
 		</header>
-		
-<div class="post__toc toc">
-	<div class="toc__title">Page content</div>
-	<div class="toc__menu">
-		<nav id="TableOfContents">
+		<div class="content post__content clearfix">
+			<p>In this note, I cover the details that I have uncovered thus far with rook and
+ceph.  Ceph is a distributed filesystem that provides persistent storage,
+S3-like object store and NFS support in one happy container.  Ceph can be quite
+difficult to install the first couple times. Rook is intended to make deploying
+Ceph much easier.</p>
+<p>So far, the experience is quite challenging. Here is what I&rsquo;ve pieced together
+thus far.</p>
+<div class="section" style="display:flex"> 
+<div class="column"  style="column-width:60em" ><div>
+    <h2>Table Of Contents</h2>
+    <nav id="TableOfContents">
   <ul>
     <li><a href="#installation">Installation</a>
       <ul>
@@ -133,18 +140,29 @@ if (!doNotTrack) {
         <li><a href="#tear-down-helm">Tear down helm</a></li>
       </ul>
     </li>
-    <li><a href="#the-rook-ceph-namespace-wont-go-away">The rook-ceph namespace wont go away</a></li>
+    <li><a href="#the-rook-ceph-namespace-wont-go-away">The rook-ceph namespace wont go away</a>
+      <ul>
+        <li><a href="#clean-up-nodes">Clean up nodes</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
-	</div>
-</div><div class="content post__content clearfix">
-			<p>In this note, I cover the details that I have uncovered thus far with rook and
-ceph.  Ceph is a distributed filesystem that provides persistent storage,
-S3-like object store and NFS support in one happy container.  Ceph can be quite
-difficult to install the first couple times. Rook is intended to make deploying
-Ceph much easier.</p>
-<p>So far, the experience is quite challenging. Here is what I&rsquo;ve pieced together
-thus far.</p>
+</div>
+</div>
+
+
+
+<div class="column"  style="column-width:40em" ><figure><img src="../ceph/harder.jpg" width="320"/><figcaption>
+            <h4>first ceph experiences</h4>
+        </figcaption>
+</figure>
+</div>
+
+
+
+ </div>
+
+
 <h2 id="installation">Installation</h2>
 <h3 id="rook-operator">Rook operator</h3>
 <p>This installs and manages ceph clusters</p>
@@ -190,40 +208,31 @@ Labels:       kubernetes.io/metadata.name=rook-ceph
 Annotations:  &lt;none&gt;
 Status:       Terminating
 Conditions:
-  Type                                   Status  LastTransitionTime               Reason                Message
-  ----                                         ------  ------------------               ------                -------
-
-  NamespaceFinalizersRemaining                 True    Thu, 09 Feb 2023 13:21:16 +0700  SomeFinalizersRemain  Some content in the namespace has finalizers remaining: cephblockpool.ceph.rook.io in 1 resource instances, cephobjectstore.ceph.rook.io in 1 resource instances
-
-
-
-
-### Clean up nodes
-
-Rook and Ceph leave stuff the nodes that will get in the way if you try to
+ Type        Status  LastTransitionTime  Reason      Message
+ ----        ------  ------------------  ------      -------
+ Namespace   True    09 Feb  13:21:16    Some        Some content in the namespace has finalizers remaining:
+ Finalizers                              Finalizers  cephblockpool.ceph.rook.io in 1 resource instances,
+ Remaining                               Remain      cephobjectstore.ceph.rook.io in 1 resource instances
+</code></pre><p>For example, do a <code>kubectl get cephblockpool -n rook-ceph</code>, which will show the
+remaining block pool. <code>kubectl edit</code> that, remove  the Finalizers stanza, and
+you&rsquo;re good to go.</p>
+<h3 id="clean-up-nodes">Clean up nodes</h3>
+<p>Rook and Ceph leave stuff the nodes that will get in the way if you try to
 reinstall them later.  New builds will fail to work if you forget to clean this
-first. **This includes any masters for which you have removed the noschedule
-taint!**
-
-These actions have to performed on all nodes:
-
- 1. `rm -rf /var/lib/rook`
- 2. For any block device used by ceph:  `dd if=/dev/zero of=/dev/DEVICE bs=4096
-    count=10240`
-
-For me, that looks like:
-</code></pre><p>for x in k8smaster k8sn1 k8sn2 k8sn3; do
-ssh $x &ldquo;sudo rm -rf /var/lib/rook&rdquo;;
-ssh $x &ldquo;sudo dd if=/dev/zero of/dev/dm-1 bs=4096 count=10240&rdquo;;
-done</p>
-<pre tabindex="0"><code>
-
-
-
-# Configuration
-
-# Loose Notes
-</code></pre>
+first. <strong>This includes any masters for which you have removed the noschedule
+taint!</strong></p>
+<p>These actions have to performed on all nodes:</p>
+<ol>
+<li><code>rm -rf /var/lib/rook</code></li>
+<li>For any block device used by ceph:  <code>dd if=/dev/zero of=/dev/DEVICE bs=4096 count=10240</code></li>
+</ol>
+<p>For me, that looks like:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#66d9ef">for</span> x in k8smaster k8sn1 k8sn2 k8sn3; <span style="color:#66d9ef">do</span>
+</span></span><span style="display:flex;"><span>   ssh $x <span style="color:#e6db74">&#34;sudo rm -rf /var/lib/rook&#34;</span>;
+</span></span><span style="display:flex;"><span>   ssh $x <span style="color:#e6db74">&#34;sudo dd if=/dev/zero of/dev/dm-1 bs=4096 count=10240&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">done</span>
+</span></span></code></pre></div><h1 id="configuration">Configuration</h1>
+<h1 id="loose-notes">Loose Notes</h1>
 		</div>
 		<footer class="post__footer">
 			
