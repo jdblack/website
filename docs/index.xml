@@ -6,7 +6,7 @@
     <description>Recent content on DevOps Thoughts and Ruminations</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 09 Feb 2023 12:25:05 +0700</lastBuildDate><atom:link href="https://www.linuxguru.net/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 16 Jan 2023 15:27:28 +0700</lastBuildDate><atom:link href="https://www.linuxguru.net/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Projects</title>
       <link>https://www.linuxguru.net/projects/</link>
@@ -31,16 +31,6 @@ Tandy CoCo 2 My nerdlife started when a friend&amp;rsquo;s father brought home a
     </item>
     
     <item>
-      <title>Ceph in K8s</title>
-      <link>https://www.linuxguru.net/notes/ceph_in_k8s/</link>
-      <pubDate>Thu, 09 Feb 2023 12:25:05 +0700</pubDate>
-      
-      <guid>https://www.linuxguru.net/notes/ceph_in_k8s/</guid>
-      <description>&lt;p&gt;My raw notes on installing ceph in K8s. This information is exploratory in
-nature and should not be relied on in production enviornments&lt;/p&gt;</description>
-    </item>
-    
-    <item>
       <title>Clustering cinc or chef Part 1</title>
       <link>https://www.linuxguru.net/post/clustering_cinc/</link>
       <pubDate>Mon, 16 Jan 2023 15:27:28 +0700</pubDate>
@@ -58,6 +48,15 @@ parts of the service need to be broken out to provide for a cluster.&lt;/p&gt;</
       
       <guid>https://www.linuxguru.net/post/welcome/</guid>
       <description>Welcome!</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://www.linuxguru.net/notes/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.linuxguru.net/notes/</guid>
+      <description></description>
     </item>
     
   </channel>
