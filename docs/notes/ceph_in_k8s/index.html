@@ -19,7 +19,7 @@ nature and should not be relied on in production enviornments" />
 <meta itemprop="description" content="My raw notes on installing ceph in K8s. This information is exploratory in
 nature and should not be relied on in production enviornments"><meta itemprop="datePublished" content="2023-02-09T12:25:05+07:00" />
 <meta itemprop="dateModified" content="2023-02-09T12:25:05+07:00" />
-<meta itemprop="wordCount" content="261">
+<meta itemprop="wordCount" content="434">
 <meta itemprop="keywords" content="k8s,ceph," />
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
@@ -81,7 +81,6 @@ if (!doNotTrack) {
 	</ul>
 </nav>
 
-
 	</div>
 </header>
 		<div class="wrapper flex">
@@ -115,9 +114,9 @@ if (!doNotTrack) {
       <ul>
         <li><a href="#remove-finalizers-from-3-objects">Remove finalizers from 3 objects</a></li>
         <li><a href="#tear-down-helm">Tear down helm</a></li>
-        <li><a href="#clean-up-nodes">Clean up nodes</a></li>
       </ul>
     </li>
+    <li><a href="#the-rook-ceph-namespace-wont-go-away">The rook-ceph namespace wont go away</a></li>
   </ul>
 </nav>
 	</div>
@@ -155,18 +154,54 @@ able to delete the rook-ceph deployment</p>
 <li><code>helm delete rook-ceph-cluster -n rook-ceph</code></li>
 <li><code>helm delete rook-ceph -n rook-ceph</code></li>
 </ol>
-<h3 id="clean-up-nodes">Clean up nodes</h3>
-<p>Rook and Ceph leave stuff the nodes that will get in the way if you try to
+<h2 id="the-rook-ceph-namespace-wont-go-away">The rook-ceph namespace wont go away</h2>
+<p>If you&rsquo;re like me, you probabably forgot to remove the finalizers. Go back and
+go &ldquo;Remove Finalizers&rdquo;.  You should now  be able to do <code>kubectl delete ns rook-ceph</code></p>
+<p>Sometimes there are more finalizers that need to go.  Running <code>kubectl describe ns rook-ceph</code> will give log of prior events.  In this example, we can see
+that  there are still a <code>cephblockpool</code> and <code>cephobjectstore</code> object.  Find
+them with  <code>kubectl get cephblockpool -n rook-ceph</code>, edit them, and remove
+the finalizers as with the other examples</p>
+<pre tabindex="0"><code>~$ k describe namespace rook-ceph
+Name:         rook-ceph
+Labels:       kubernetes.io/metadata.name=rook-ceph
+              name=rook-ceph
+Annotations:  &lt;none&gt;
+Status:       Terminating
+Conditions:
+  Type                                   Status  LastTransitionTime               Reason                Message
+  ----                                         ------  ------------------               ------                -------
+
+  NamespaceFinalizersRemaining                 True    Thu, 09 Feb 2023 13:21:16 +0700  SomeFinalizersRemain  Some content in the namespace has finalizers remaining: cephblockpool.ceph.rook.io in 1 resource instances, cephobjectstore.ceph.rook.io in 1 resource instances
+
+
+
+
+### Clean up nodes
+
+Rook and Ceph leave stuff the nodes that will get in the way if you try to
 reinstall them later.  New builds will fail to work if you forget to clean this
-first. <strong>This includes any masters for which you have removed the noschedule
-taint!</strong></p>
-<p>These actions have to performed on all nodes:</p>
-<ol>
-<li><code>rm -rf /var/lib/rook</code></li>
-<li>For any block device used by ceph:  <code>dd if=/dev/zero of=/dev/DEVICE bs=4096 count=10240</code></li>
-</ol>
-<h1 id="configuration">Configuration</h1>
-<h1 id="loose-notes">Loose Notes</h1>
+first. **This includes any masters for which you have removed the noschedule
+taint!**
+
+These actions have to performed on all nodes:
+
+ 1. `rm -rf /var/lib/rook`
+ 2. For any block device used by ceph:  `dd if=/dev/zero of=/dev/DEVICE bs=4096
+    count=10240`
+
+For me, that looks like:
+</code></pre><p>for x in k8smaster k8sn1 k8sn2 k8sn3; do
+ssh $x &ldquo;sudo rm -rf /var/lib/rook&rdquo;;
+ssh $x &ldquo;sudo dd if=/dev/zero of/dev/dm-1 bs=4096 count=10240&rdquo;;
+done</p>
+<pre tabindex="0"><code>
+
+
+
+# Configuration
+
+# Loose Notes
+</code></pre>
 		</div>
 		<footer class="post__footer">
 			

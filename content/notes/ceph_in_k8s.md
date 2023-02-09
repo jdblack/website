@@ -50,11 +50,39 @@ able to delete the rook-ceph deployment
  2. `kubectl edit secret rook-ceph-mon -n rook-ceph`
  3. `kubectl edit cm rook-ceph-mon-endpoints -n rook-ceph`
 
+
 ### Tear down helm
 With the finalizers gone, we can delete the helm charts
 
  1. `helm delete rook-ceph-cluster -n rook-ceph`
  2. `helm delete rook-ceph -n rook-ceph`
+
+
+## The rook-ceph namespace wont go away
+
+If you're like me, you probabably forgot to remove the finalizers. Go back and
+go "Remove Finalizers".  You should now  be able to do `kubectl delete ns rook-ceph`
+
+Sometimes there are more finalizers that need to go.  Running `kubectl describe
+ns rook-ceph` will give log of prior events.  In this example, we can see
+that  there are still a `cephblockpool` and `cephobjectstore` object.  Find
+them with  `kubectl get cephblockpool -n rook-ceph`, edit them, and remove
+the finalizers as with the other examples
+
+```
+~$ k describe namespace rook-ceph
+Name:         rook-ceph
+Labels:       kubernetes.io/metadata.name=rook-ceph
+              name=rook-ceph
+Annotations:  <none>
+Status:       Terminating
+Conditions:
+  Type                                   Status  LastTransitionTime               Reason                Message
+  ----                                         ------  ------------------               ------                -------
+
+  NamespaceFinalizersRemaining                 True    Thu, 09 Feb 2023 13:21:16 +0700  SomeFinalizersRemain  Some content in the namespace has finalizers remaining: cephblockpool.ceph.rook.io in 1 resource instances, cephobjectstore.ceph.rook.io in 1 resource instances
+
+
 
 
 ### Clean up nodes
@@ -70,7 +98,13 @@ These actions have to performed on all nodes:
  2. For any block device used by ceph:  `dd if=/dev/zero of=/dev/DEVICE bs=4096
     count=10240`
 
-
+For me, that looks like:
+```
+for x in k8smaster k8sn1 k8sn2 k8sn3; do
+   ssh $x "sudo rm -rf /var/lib/rook";
+   ssh $x "sudo dd if=/dev/zero of/dev/dm-1 bs=4096 count=10240";
+done
+```
 
 
 
