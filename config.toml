@@ -46,7 +46,7 @@ menu = [ "main" ]
 
 [Params.logo]
   image = "img/me.png" # Logo image. Path relative to "static"
-  title = "DevOpped!" # Logo title, otherwise will use site title
+  title = "Naming is hard" # Logo title, otherwise will use site title
   subtitle = "Thoughts and Ruminations from the world of Devops"
 
 [Params.widgets]

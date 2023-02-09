@@ -8,18 +8,16 @@
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
 		<meta property="og:title" content="Ceph in K8s" />
-<meta property="og:description" content="My raw notes on installing ceph in K8s. This information is exploratory in
-nature and should not be relied on in production enviornments" />
+<meta property="og:description" content="This note covers using helm to deploy rook and cephs." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.linuxguru.net/notes/ceph_in_k8s/" /><meta property="article:section" content="notes" />
 <meta property="article:published_time" content="2023-02-09T12:25:05+07:00" />
 <meta property="article:modified_time" content="2023-02-09T12:25:05+07:00" />
 
 		<meta itemprop="name" content="Ceph in K8s">
-<meta itemprop="description" content="My raw notes on installing ceph in K8s. This information is exploratory in
-nature and should not be relied on in production enviornments"><meta itemprop="datePublished" content="2023-02-09T12:25:05+07:00" />
+<meta itemprop="description" content="This note covers using helm to deploy rook and cephs."><meta itemprop="datePublished" content="2023-02-09T12:25:05+07:00" />
 <meta itemprop="dateModified" content="2023-02-09T12:25:05+07:00" />
-<meta itemprop="wordCount" content="434">
+<meta itemprop="wordCount" content="421">
 <meta itemprop="keywords" content="k8s,ceph," />
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
@@ -49,11 +47,11 @@ if (!doNotTrack) {
 	<div class="container header__container">
 		
 	<div class="logo logo--mixed">
-		<a class="logo__link" href="/" title="DevOpped!" rel="home">
+		<a class="logo__link" href="/" title="Naming is hard" rel="home">
 			<div class="logo__item logo__imagebox">
 					<img class="logo__img" src="/img/me.png">
 				</div><div class="logo__item logo__text">
-					<div class="logo__title">DevOpped!</div>
+					<div class="logo__title">Naming is hard</div>
 					<div class="logo__tagline">Thoughts and Ruminations from the world of Devops</div>
 				</div>
 		</a>
@@ -68,6 +66,13 @@ if (!doNotTrack) {
 			<a class="menu__link" href="/projects/">
 				
 				<span class="menu__text">Projects</span>
+				
+			</a>
+		</li>
+		<li class="menu__item menu__item--active">
+			<a class="menu__link" href="/notes/">
+				
+				<span class="menu__text">My Notes</span>
 				
 			</a>
 		</li>
@@ -121,8 +126,7 @@ if (!doNotTrack) {
 </nav>
 	</div>
 </div><div class="content post__content clearfix">
-			<p>My raw notes on installing ceph in K8s. This information is exploratory in
-nature and should not be relied on in production enviornments</p>
+			<p>This note covers using helm to deploy rook and cephs.</p>
 <h2 id="installation">Installation</h2>
 <h3 id="rook-operator">Rook operator</h3>
 <p>This installs and manages ceph clusters</p>

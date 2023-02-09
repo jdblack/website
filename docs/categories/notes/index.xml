@@ -13,8 +13,7 @@
       <pubDate>Thu, 09 Feb 2023 12:25:05 +0700</pubDate>
       
       <guid>https://www.linuxguru.net/notes/ceph_in_k8s/</guid>
-      <description>&lt;p&gt;My raw notes on installing ceph in K8s. This information is exploratory in
-nature and should not be relied on in production enviornments&lt;/p&gt;</description>
+      <description>&lt;p&gt;This note covers using helm to deploy rook and cephs.&lt;/p&gt;</description>
     </item>
     
   </channel>

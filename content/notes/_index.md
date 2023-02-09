@@ -1,6 +1,9 @@
 ---
 title: "My Notes"
 date: 2023-02-09T12:25:05+07:00
+weight: 80
+menu:
+ - main
 ---
 
 {{<section>}}

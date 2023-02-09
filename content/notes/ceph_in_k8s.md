@@ -8,8 +8,7 @@ tags:
  - ceph
 ---
 
-My raw notes on installing ceph in K8s. This information is exploratory in
-nature and should not be relied on in production enviornments
+This note covers using helm to deploy rook and cephs. 
 <!--more-->
 
 
