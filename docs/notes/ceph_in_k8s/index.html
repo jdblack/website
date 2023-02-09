@@ -13,8 +13,10 @@ ceph.  Ceph is a distributed filesystem that provides persistent storage,
 S3-like object store and NFS support in one happy container.  Ceph can be quite
 difficult to install the first couple times. Rook is intended to make deploying
 Ceph much easier.
-So far, the experience is quite challenging. Here is what I&rsquo;ve pieced together
-thus far." />
+Unfortunately, Ceph&rsquo;s resource requirements exceed that of my little home
+lab, which consists of four systems with four cores and sixteen gigs of ram
+each. I&rsquo;ll reexplore this topic when I have expanded the cluster to six or
+eight nodes." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.linuxguru.net/notes/ceph_in_k8s/" /><meta property="article:section" content="notes" />
 <meta property="article:published_time" content="2023-02-09T12:25:05+07:00" />
@@ -26,10 +28,12 @@ ceph.  Ceph is a distributed filesystem that provides persistent storage,
 S3-like object store and NFS support in one happy container.  Ceph can be quite
 difficult to install the first couple times. Rook is intended to make deploying
 Ceph much easier.
-So far, the experience is quite challenging. Here is what I&rsquo;ve pieced together
-thus far."><meta itemprop="datePublished" content="2023-02-09T12:25:05+07:00" />
+Unfortunately, Ceph&rsquo;s resource requirements exceed that of my little home
+lab, which consists of four systems with four cores and sixteen gigs of ram
+each. I&rsquo;ll reexplore this topic when I have expanded the cluster to six or
+eight nodes."><meta itemprop="datePublished" content="2023-02-09T12:25:05+07:00" />
 <meta itemprop="dateModified" content="2023-02-09T12:25:05+07:00" />
-<meta itemprop="wordCount" content="862">
+<meta itemprop="wordCount" content="824">
 <meta itemprop="keywords" content="k8s,ceph," />
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
@@ -111,7 +115,7 @@ if (!doNotTrack) {
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">James Blackwell</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2023-02-09T12:25:05&#43;07:00">2023-02-09</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/notes/" rel="category">notes</a>, <a class="meta__link" href="/categories/underway/" rel="category">underway</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2023-02-09T12:25:05&#43;07:00">2023-02-09</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/notes/" rel="category">notes</a>, <a class="meta__link" href="/categories/on-hold/" rel="category">on hold</a>
 	</span>
 </div></div>
 		</header>
@@ -121,8 +125,10 @@ ceph.  Ceph is a distributed filesystem that provides persistent storage,
 S3-like object store and NFS support in one happy container.  Ceph can be quite
 difficult to install the first couple times. Rook is intended to make deploying
 Ceph much easier.</p>
-<p>So far, the experience is quite challenging. Here is what I&rsquo;ve pieced together
-thus far.</p>
+<p>Unfortunately, Ceph&rsquo;s resource requirements exceed that of my little home
+lab, which consists of four systems with four cores and sixteen gigs of ram
+each. I&rsquo;ll reexplore this topic when I have expanded the cluster to six or
+eight nodes.</p>
 <div class="section" style="display:flex"> 
 <div class="column"  style="column-width:60em" ><div>
     <h2>Table Of Contents</h2>
@@ -141,7 +147,6 @@ thus far.</p>
     </li>
     <li><a href="#teardown">Teardown</a>
       <ul>
-        <li><a href="#remove-finalizers-from-ceph-objects">Remove finalizers from ceph objects</a></li>
         <li><a href="#tear-down-helm">Tear down helm</a></li>
         <li><a href="#the-rook-ceph-namespace-wont-go-away">The rook-ceph namespace wont go away</a></li>
         <li><a href="#clean-up-nodes">Clean up nodes</a></li>
@@ -240,28 +245,17 @@ upgrade.&rdquo;</p>
 </span></span></code></pre></div><h2 id="teardown">Teardown</h2>
 <p>Ceph does not go down without a fight. You&rsquo;ll need to do 4 things to return to
 a pristine state:</p>
-<h3 id="remove-finalizers-from-ceph-objects">Remove finalizers from ceph objects</h3>
-<p>Finalizers are put into the cephcluster, secret and configmap objects to
-protect ceph. We&rsquo;ll need to remove those finalizers before helm will be
-able to delete the rook-ceph deployment</p>
-<ol>
-<li>`kubectl edit cephcluster rook-ceph -n rook-ceph'</li>
-<li><code>kubectl edit secret rook-ceph-mon -n rook-ceph</code></li>
-<li><code>kubectl edit cm rook-ceph-mon-endpoints -n rook-ceph</code></li>
-</ol>
 <h3 id="tear-down-helm">Tear down helm</h3>
-<p>With the finalizers gone, we can delete the helm charts</p>
+<p>First, lets tear down helm</p>
 <ol>
 <li><code>helm delete rook-ceph-cluster -n rook-ceph</code></li>
 <li><code>helm delete rook-ceph -n rook-ceph</code></li>
 </ol>
 <h3 id="the-rook-ceph-namespace-wont-go-away">The rook-ceph namespace wont go away</h3>
-<p>If you&rsquo;re like me, you probabably forgot to remove the finalizers. Go back and
-go &ldquo;Remove Finalizers&rdquo;.  You should now  be able to do <code>kubectl delete ns rook-ceph</code></p>
-<p>Sometimes there are more finalizers that need to go.  Running <code>kubectl describe ns rook-ceph</code> will give log of prior events.  In this example, we can see
-that  there are still a <code>cephblockpool</code> and <code>cephobjectstore</code> object.  Find
-them with  <code>kubectl get cephblockpool -n rook-ceph</code>, edit them, and remove
-the finalizers as with the other examples</p>
+<p>Finalizers are put into the cephcluster, secret and configmap objects to
+protect ceph. We&rsquo;ll need to remove those finalizers before helm will be
+able to delete the rook-ceph deployment</p>
+<p>The error for the namesapce will look like this:</p>
 <pre tabindex="0"><code>~$ k describe namespace rook-ceph
 Name:         rook-ceph
 Labels:       kubernetes.io/metadata.name=rook-ceph
@@ -274,7 +268,11 @@ Conditions:
  Namespace   True    09 Feb  13:21:16    Some        Some content in the namespace has finalizers remaining:
  Finalizers                              Finalizers  cephblockpool.ceph.rook.io in 1 resource instances,
  Remaining                               Remain      cephobjectstore.ceph.rook.io in 1 resource instances
-</code></pre><p>For example, do a <code>kubectl get cephblockpool -n rook-ceph</code>, which will show the
+</code></pre><p>You can use the following command to find all of the stuck objects and
+delete them:</p>
+<p><code> kubectl api-resources --verbs=list --namespaced -o name | xargs -n 1 kubectl get --show-kind --ignore-not-found -n rook-ceph</code></p>
+<p>Edit each one of the objects listed and remove their finalizers</p>
+<p>For example, do a <code>kubectl get cephblockpool -n rook-ceph</code>, which will show the
 remaining block pool. <code>kubectl edit</code> that, remove  the Finalizers stanza, and
 you&rsquo;re good to go.</p>
 <h3 id="clean-up-nodes">Clean up nodes</h3>

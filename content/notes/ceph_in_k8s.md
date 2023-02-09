@@ -4,7 +4,7 @@ date: 2023-02-09T12:25:05+07:00
 toc: false
 categories:
  - notes
- - underway
+ - on hold
 tags:
  - k8s
  - ceph
@@ -17,8 +17,11 @@ S3-like object store and NFS support in one happy container.  Ceph can be quite
 difficult to install the first couple times. Rook is intended to make deploying
 Ceph much easier.  
 
-So far, the experience is quite challenging. Here is what I've pieced together
-thus far.
+Unfortunately, Ceph's resource requirements exceed that of my little home
+lab, which consists of four systems with four cores and sixteen gigs of ram
+each. I'll reexplore this topic when I have expanded the cluster to six or
+eight nodes.
+
 
 <!--more-->
 {{<section>}}
@@ -133,19 +136,8 @@ spec:
 Ceph does not go down without a fight. You'll need to do 4 things to return to
 a pristine state:
 
-### Remove finalizers from ceph objects
-
-Finalizers are put into the cephcluster, secret and configmap objects to
-protect ceph. We'll need to remove those finalizers before helm will be
-able to delete the rook-ceph deployment
-
- 1. `kubectl edit cephcluster rook-ceph -n rook-ceph'
- 2. `kubectl edit secret rook-ceph-mon -n rook-ceph`
- 3. `kubectl edit cm rook-ceph-mon-endpoints -n rook-ceph`
-
-
 ### Tear down helm
-With the finalizers gone, we can delete the helm charts
+First, lets tear down helm
 
  1. `helm delete rook-ceph-cluster -n rook-ceph`
  2. `helm delete rook-ceph -n rook-ceph`
@@ -153,15 +145,11 @@ With the finalizers gone, we can delete the helm charts
 
 ### The rook-ceph namespace wont go away
 
-If you're like me, you probabably forgot to remove the finalizers. Go back and
-go "Remove Finalizers".  You should now  be able to do `kubectl delete ns rook-ceph`
+Finalizers are put into the cephcluster, secret and configmap objects to
+protect ceph. We'll need to remove those finalizers before helm will be
+able to delete the rook-ceph deployment
 
-Sometimes there are more finalizers that need to go.  Running `kubectl describe
-ns rook-ceph` will give log of prior events.  In this example, we can see
-that  there are still a `cephblockpool` and `cephobjectstore` object.  Find
-them with  `kubectl get cephblockpool -n rook-ceph`, edit them, and remove
-the finalizers as with the other examples
-
+The error for the namesapce will look like this:
 ```
 ~$ k describe namespace rook-ceph
 Name:         rook-ceph
@@ -176,6 +164,14 @@ Conditions:
  Finalizers                              Finalizers  cephblockpool.ceph.rook.io in 1 resource instances,
  Remaining                               Remain      cephobjectstore.ceph.rook.io in 1 resource instances
 ```
+
+You can use the following command to find all of the stuck objects and 
+delete them:
+
+
+` kubectl api-resources --verbs=list --namespaced -o name | xargs -n 1 kubectl get --show-kind --ignore-not-found -n rook-ceph`
+
+Edit each one of the objects listed and remove their finalizers
 
 For example, do a `kubectl get cephblockpool -n rook-ceph`, which will show the
 remaining block pool. `kubectl edit` that, remove  the Finalizers stanza, and

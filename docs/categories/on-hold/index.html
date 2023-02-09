@@ -4,15 +4,15 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>config management - DevOps Thoughts and Ruminations</title>
+	<title>on hold - DevOps Thoughts and Ruminations</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
-		<meta property="og:title" content="config management" />
+		<meta property="og:title" content="on hold" />
 <meta property="og:description" content="Thoughts and Ruminations from the world of Devops" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://www.linuxguru.net/tags/config-management/" />
+<meta property="og:url" content="https://www.linuxguru.net/categories/on-hold/" />
 
-		<meta itemprop="name" content="config management">
+		<meta itemprop="name" content="on hold">
 <meta itemprop="description" content="Thoughts and Ruminations from the world of Devops">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
@@ -21,7 +21,7 @@
 
 	<link rel="stylesheet" href="/css/style.css">
 	<link rel="stylesheet" href="/css/custom.css">
-	<link rel="alternate" type="application/rss+xml" href="/tags/config-management/index.xml" title="DevOps Thoughts and Ruminations">
+	<link rel="alternate" type="application/rss+xml" href="/categories/on-hold/index.xml" title="DevOps Thoughts and Ruminations">
 
 	<link rel="shortcut icon" href="/favicon.ico">
 		
@@ -89,27 +89,33 @@ if (!doNotTrack) {
 			
 <main class="main list" role="main">
 	<header class="main__header">
-		<h1 class="main__title">config management</h1>
+		<h1 class="main__title">on hold</h1>
 	</header><article class="list__item post">
 	
 	<header class="list__header">
 		<h2 class="list__title post__title">
-			<a href="/post/clustering_cinc/" rel="bookmark">
-			Clustering cinc or chef Part 1
+			<a href="/notes/ceph_in_k8s/" rel="bookmark">
+			Ceph in K8s
 			</a>
 		</h2>
 		<div class="list__meta meta"><div class="meta__item-author meta__item">
 	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">James Blackwell</span>
 </div>
 <div class="meta__item-datetime meta__item">
-	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2023-01-16T15:27:28&#43;07:00">2023-01-16</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/devops/" rel="category">devops</a>
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2023-02-09T12:25:05&#43;07:00">2023-02-09</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/notes/" rel="category">notes</a>, <a class="meta__link" href="/categories/on-hold/" rel="category">on hold</a>
 	</span>
 </div></div>
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p>This article is the first of a series about setting up Cinc or Chef as as a
-horizontally scalable service. This first post introduces the concept of which
-parts of the service need to be broken out to provide for a cluster.</p>
+		<p>In this note, I cover the details that I have uncovered thus far with rook and
+ceph.  Ceph is a distributed filesystem that provides persistent storage,
+S3-like object store and NFS support in one happy container.  Ceph can be quite
+difficult to install the first couple times. Rook is intended to make deploying
+Ceph much easier.</p>
+<p>Unfortunately, Ceph&rsquo;s resource requirements exceed that of my little home
+lab, which consists of four systems with four cores and sixteen gigs of ram
+each. I&rsquo;ll reexplore this topic when I have expanded the cluster to six or
+eight nodes.</p>
 	</div>
 </article>
 </main>

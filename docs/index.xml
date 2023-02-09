@@ -41,8 +41,10 @@ ceph.  Ceph is a distributed filesystem that provides persistent storage,
 S3-like object store and NFS support in one happy container.  Ceph can be quite
 difficult to install the first couple times. Rook is intended to make deploying
 Ceph much easier.&lt;/p&gt;
-&lt;p&gt;So far, the experience is quite challenging. Here is what I&amp;rsquo;ve pieced together
-thus far.&lt;/p&gt;</description>
+&lt;p&gt;Unfortunately, Ceph&amp;rsquo;s resource requirements exceed that of my little home
+lab, which consists of four systems with four cores and sixteen gigs of ram
+each. I&amp;rsquo;ll reexplore this topic when I have expanded the cluster to six or
+eight nodes.&lt;/p&gt;</description>
     </item>
     
     <item>
