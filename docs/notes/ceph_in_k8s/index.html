@@ -29,7 +29,7 @@ Ceph much easier.
 So far, the experience is quite challenging. Here is what I&rsquo;ve pieced together
 thus far."><meta itemprop="datePublished" content="2023-02-09T12:25:05+07:00" />
 <meta itemprop="dateModified" content="2023-02-09T12:25:05+07:00" />
-<meta itemprop="wordCount" content="535">
+<meta itemprop="wordCount" content="862">
 <meta itemprop="keywords" content="k8s,ceph," />
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
@@ -134,14 +134,16 @@ thus far.</p>
         <li><a href="#rook-ceph-cluster">Rook-Ceph cluster</a></li>
       </ul>
     </li>
-    <li><a href="#teardown">Teardown</a>
+    <li><a href="#configuration">Configuration</a>
       <ul>
-        <li><a href="#remove-finalizers-from-3-objects">Remove finalizers from 3 objects</a></li>
-        <li><a href="#tear-down-helm">Tear down helm</a></li>
+        <li><a href="#lvm-volumes">LVM Volumes</a></li>
       </ul>
     </li>
-    <li><a href="#the-rook-ceph-namespace-wont-go-away">The rook-ceph namespace wont go away</a>
+    <li><a href="#teardown">Teardown</a>
       <ul>
+        <li><a href="#remove-finalizers-from-ceph-objects">Remove finalizers from ceph objects</a></li>
+        <li><a href="#tear-down-helm">Tear down helm</a></li>
+        <li><a href="#the-rook-ceph-namespace-wont-go-away">The rook-ceph namespace wont go away</a></li>
         <li><a href="#clean-up-nodes">Clean up nodes</a></li>
       </ul>
     </li>
@@ -164,22 +166,81 @@ thus far.</p>
 
 
 <h2 id="installation">Installation</h2>
+<p>Installation involves installing two helm charts;  helm-rook to install the
+rook operator, and helm-rook-ceph, which sets up a cephcluster object among
+other components.</p>
 <h3 id="rook-operator">Rook operator</h3>
-<p>This installs and manages ceph clusters</p>
+<p>This installs the rook operator, which watches for the creation of the
+Ceph related custom resource definitions that it provices and actaully
+creates them.</p>
 <pre tabindex="0"><code>helm repo add rook-release https://charts.rook.io/release
 # Note: --set &#34;enableDiscoveryDaemon=true&#34; might be necessary if you want
 # want to set node definitions in cephclusters
 
 helm install --create-namespace --namespace rook-ceph rook-ceph \
-  rook-release/rook-ceph  # --set &#34;enableDsicoveryDaemon=true&#34;
+  rook-release/rook-ceph  --set &#34;enableDiscoveryDaemon=true&#34;
+
+# This will start you off with the rook operator and one discover pod
+# per node
+
+~/code/linuxguru$ k get pods -n rook-ceph
+NAME                                  READY   STATUS    RESTARTS   AGE
+rook-ceph-operator-559cbcdf67-x28sb   1/1     Running   0          20s
+rook-discover-4kmxq                   1/1     Running   0          16s
+rook-discover-86l8b                   1/1     Running   0          16s
+rook-discover-cp97c                   1/1     Running   0          16s
+rook-discover-k9lx9                   1/1     Running   0          16s
 </code></pre><h3 id="rook-ceph-cluster">Rook-Ceph cluster</h3>
-<p>This helm chart instructs the rook operator above to install a ceph cluster</p>
+<p>This helm chart creates a pile of ceph custom resource definitions that are
+picked up by the rook operator above.</p>
 <pre tabindex="0"><code>helm install --create-namespace --namespace rook-ceph rook-ceph-cluster \ 
   --set operatorNamespace=rook-ceph rook-release/rook-ceph-cluster
-</code></pre><h2 id="teardown">Teardown</h2>
+
+~/code/linuxguru$ k get cephcluster -A -w
+NAMESPACE   NAME        DATADIRHOSTPATH   MONCOUNT   AGE   PHASE         MESSAGE                 HEALTH   EXTERNAL
+rook-ceph   rook-ceph   /var/lib/rook     3          90s   Progressing   Configuring Ceph Mons
+rook-ceph   rook-ceph   /var/lib/rook     3          98s   Progressing   Configuring Ceph Mgr(s)
+rook-ceph   rook-ceph   /var/lib/rook     3          2m8s   Progressing   Configuring Ceph OSDs
+rook-ceph   rook-ceph   /var/lib/rook     3          4m20s   Ready         Cluster created successfully
+rook-ceph   rook-ceph   /var/lib/rook     3          4m33s   Ready         Cluster created successfully   HEALTH_WARN
+</code></pre><p>After a few minutes, the cluster is up. In my case, the cluster is unhealhty
+becuase I do not have any volumes attached to the cluster and LVM volumes are
+not automatically added. To fix this, I add the nodes and volumes manually,
+which I discuss below under Configuration</p>
+<h2 id="configuration">Configuration</h2>
+<h3 id="lvm-volumes">LVM Volumes</h3>
+<p>Most of the documentation that I came across seems to indicate that LVM volumes
+with rook-ceph are problematic. Ceph itself can handle LVM volumes, but
+currently Rook intentionally skips LVM volumes. I was able to use LVM volumes
+by adding them manually in the ceph cluster It appears that <a href="https://github.com/rook/rook/pull/7967">this pull
+request</a> intentionally disabled
+automatic adding of logical volumes to &ldquo;avoid unwanted LV consumption on
+upgrade.&rdquo;</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">ceph.rook.io/v1</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">kind</span>: <span style="color:#ae81ff">CephCluster</span>
+</span></span><span style="display:flex;"><span>...
+</span></span><span style="display:flex;"><span>...
+</span></span><span style="display:flex;"><span><span style="color:#f92672">spec</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">storage</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">useAllDevices</span>: <span style="color:#66d9ef">false</span>  [<span style="color:#ae81ff">originally true]</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">useAllNodes</span>: <span style="color:#66d9ef">false</span> [ <span style="color:#ae81ff">originally true]</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">nodes</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">k8sn1</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">devices</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">dm-1</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">k8sn2</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">devices</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">dm-1</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">k8sn3</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">devices</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">dm-1</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">k8smaster.vn.linuxguru.net</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">devices</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">dm-1</span>
+</span></span></code></pre></div><h2 id="teardown">Teardown</h2>
 <p>Ceph does not go down without a fight. You&rsquo;ll need to do 4 things to return to
 a pristine state:</p>
-<h3 id="remove-finalizers-from-3-objects">Remove finalizers from 3 objects</h3>
+<h3 id="remove-finalizers-from-ceph-objects">Remove finalizers from ceph objects</h3>
 <p>Finalizers are put into the cephcluster, secret and configmap objects to
 protect ceph. We&rsquo;ll need to remove those finalizers before helm will be
 able to delete the rook-ceph deployment</p>
@@ -194,7 +255,7 @@ able to delete the rook-ceph deployment</p>
 <li><code>helm delete rook-ceph-cluster -n rook-ceph</code></li>
 <li><code>helm delete rook-ceph -n rook-ceph</code></li>
 </ol>
-<h2 id="the-rook-ceph-namespace-wont-go-away">The rook-ceph namespace wont go away</h2>
+<h3 id="the-rook-ceph-namespace-wont-go-away">The rook-ceph namespace wont go away</h3>
 <p>If you&rsquo;re like me, you probabably forgot to remove the finalizers. Go back and
 go &ldquo;Remove Finalizers&rdquo;.  You should now  be able to do <code>kubectl delete ns rook-ceph</code></p>
 <p>Sometimes there are more finalizers that need to go.  Running <code>kubectl describe ns rook-ceph</code> will give log of prior events.  In this example, we can see
@@ -229,10 +290,9 @@ taint!</strong></p>
 <p>For me, that looks like:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#66d9ef">for</span> x in k8smaster k8sn1 k8sn2 k8sn3; <span style="color:#66d9ef">do</span>
 </span></span><span style="display:flex;"><span>   ssh $x <span style="color:#e6db74">&#34;sudo rm -rf /var/lib/rook&#34;</span>;
-</span></span><span style="display:flex;"><span>   ssh $x <span style="color:#e6db74">&#34;sudo dd if=/dev/zero of/dev/dm-1 bs=4096 count=10240&#34;</span>;
+</span></span><span style="display:flex;"><span>   ssh $x <span style="color:#e6db74">&#34;sudo dd if=/dev/zero of=/dev/dm-1 bs=4096 count=10240&#34;</span>;
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">done</span>
-</span></span></code></pre></div><h1 id="configuration">Configuration</h1>
-<h1 id="loose-notes">Loose Notes</h1>
+</span></span></code></pre></div><h1 id="loose-notes">Loose Notes</h1>
 		</div>
 		<footer class="post__footer">
 			

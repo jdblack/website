@@ -34,32 +34,106 @@ thus far.
 
 ## Installation
 
+Installation involves installing two helm charts;  helm-rook to install the
+rook operator, and helm-rook-ceph, which sets up a cephcluster object among
+other components.
+
+
 ### Rook operator
-This installs and manages ceph clusters
+This installs the rook operator, which watches for the creation of the 
+Ceph related custom resource definitions that it provices and actaully
+creates them.
+
+
 ```
 helm repo add rook-release https://charts.rook.io/release
 # Note: --set "enableDiscoveryDaemon=true" might be necessary if you want
 # want to set node definitions in cephclusters
 
 helm install --create-namespace --namespace rook-ceph rook-ceph \
-  rook-release/rook-ceph  # --set "enableDsicoveryDaemon=true"
+  rook-release/rook-ceph  --set "enableDiscoveryDaemon=true"
+
+# This will start you off with the rook operator and one discover pod
+# per node
+
+~/code/linuxguru$ k get pods -n rook-ceph
+NAME                                  READY   STATUS    RESTARTS   AGE
+rook-ceph-operator-559cbcdf67-x28sb   1/1     Running   0          20s
+rook-discover-4kmxq                   1/1     Running   0          16s
+rook-discover-86l8b                   1/1     Running   0          16s
+rook-discover-cp97c                   1/1     Running   0          16s
+rook-discover-k9lx9                   1/1     Running   0          16s
+
 ```
 
+
+
 ### Rook-Ceph cluster
-This helm chart instructs the rook operator above to install a ceph cluster
+This helm chart creates a pile of ceph custom resource definitions that are
+picked up by the rook operator above.
 
 ```
 helm install --create-namespace --namespace rook-ceph rook-ceph-cluster \ 
   --set operatorNamespace=rook-ceph rook-release/rook-ceph-cluster
+
+~/code/linuxguru$ k get cephcluster -A -w
+NAMESPACE   NAME        DATADIRHOSTPATH   MONCOUNT   AGE   PHASE         MESSAGE                 HEALTH   EXTERNAL
+rook-ceph   rook-ceph   /var/lib/rook     3          90s   Progressing   Configuring Ceph Mons
+rook-ceph   rook-ceph   /var/lib/rook     3          98s   Progressing   Configuring Ceph Mgr(s)
+rook-ceph   rook-ceph   /var/lib/rook     3          2m8s   Progressing   Configuring Ceph OSDs
+rook-ceph   rook-ceph   /var/lib/rook     3          4m20s   Ready         Cluster created successfully
+rook-ceph   rook-ceph   /var/lib/rook     3          4m33s   Ready         Cluster created successfully   HEALTH_WARN
 ```
 
+After a few minutes, the cluster is up. In my case, the cluster is unhealhty
+becuase I do not have any volumes attached to the cluster and LVM volumes are
+not automatically added. To fix this, I add the nodes and volumes manually,
+which I discuss below under Configuration
+
+
+## Configuration
+
+### LVM Volumes
+
+Most of the documentation that I came across seems to indicate that LVM volumes
+with rook-ceph are problematic. Ceph itself can handle LVM volumes, but
+currently Rook intentionally skips LVM volumes. I was able to use LVM volumes
+by adding them manually in the ceph cluster It appears that [this pull
+request](https://github.com/rook/rook/pull/7967) intentionally disabled
+automatic adding of logical volumes to "avoid unwanted LV consumption on
+upgrade."
+
+
+```yaml
+apiVersion: ceph.rook.io/v1
+kind: CephCluster
+...
+...
+spec:
+  storage:
+    useAllDevices: false  [originally true]
+    useAllNodes: false [ originally true]
+    nodes:
+    - name: k8sn1
+      devices:
+      - name: dm-1
+    - name: k8sn2
+      devices:
+      - name: dm-1
+    - name: k8sn3
+      devices:
+      - name: dm-1
+    - name: k8smaster.vn.linuxguru.net
+      devices:
+      - name: dm-1
+```
 
 ## Teardown
 
 Ceph does not go down without a fight. You'll need to do 4 things to return to
 a pristine state:
 
-### Remove finalizers from 3 objects
+### Remove finalizers from ceph objects
 
 Finalizers are put into the cephcluster, secret and configmap objects to
 protect ceph. We'll need to remove those finalizers before helm will be
@@ -77,7 +151,7 @@ With the finalizers gone, we can delete the helm charts
  2. `helm delete rook-ceph -n rook-ceph`
 
 
-## The rook-ceph namespace wont go away
+### The rook-ceph namespace wont go away
 
 If you're like me, you probabably forgot to remove the finalizers. Go back and
 go "Remove Finalizers".  You should now  be able to do `kubectl delete ns rook-ceph`
@@ -126,14 +200,10 @@ For me, that looks like:
 ```shell
 for x in k8smaster k8sn1 k8sn2 k8sn3; do
    ssh $x "sudo rm -rf /var/lib/rook";
-   ssh $x "sudo dd if=/dev/zero of/dev/dm-1 bs=4096 count=10240";
+   ssh $x "sudo dd if=/dev/zero of=/dev/dm-1 bs=4096 count=10240";
 done
 ```
 
-
-
-
-# Configuration
 
 # Loose Notes
 
