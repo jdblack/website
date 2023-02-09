@@ -13,7 +13,13 @@
       <pubDate>Thu, 09 Feb 2023 12:25:05 +0700</pubDate>
       
       <guid>https://www.linuxguru.net/notes/ceph_in_k8s/</guid>
-      <description>&lt;p&gt;This note covers using helm to deploy rook and cephs.&lt;/p&gt;</description>
+      <description>&lt;p&gt;In this note, I cover the details that I have uncovered thus far with rook and
+ceph.  Ceph is a distributed filesystem that provides persistent storage,
+S3-like object store and NFS support in one happy container.  Ceph can be quite
+difficult to install the first couple times. Rook is intended to make deploying
+Ceph much easier.&lt;/p&gt;
+&lt;p&gt;So far, the experience is quite challenging. Here is what I&amp;rsquo;ve pieced together
+thus far.&lt;/p&gt;</description>
     </item>
     
   </channel>

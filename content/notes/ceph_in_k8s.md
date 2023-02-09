@@ -3,12 +3,21 @@ title: "Ceph in K8s"
 date: 2023-02-09T12:25:05+07:00
 categories:
  - notes
+ - underway
 tags:
  - k8s
  - ceph
 ---
 
-This note covers using helm to deploy rook and cephs. 
+In this note, I cover the details that I have uncovered thus far with rook and
+ceph.  Ceph is a distributed filesystem that provides persistent storage,
+S3-like object store and NFS support in one happy container.  Ceph can be quite
+difficult to install the first couple times. Rook is intended to make deploying
+Ceph much easier.  
+
+So far, the experience is quite challenging. Here is what I've pieced together
+thus far.
+
 <!--more-->
 
 
