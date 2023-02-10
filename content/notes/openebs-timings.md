@@ -56,10 +56,7 @@ For each test case I installed [dbench](https://dbench.samba.org/) and ran a
 quick one minute test in each context with the command `dbench 4 -t 60`.  For
 replicated Jiva volumes, I created 10GB persistent volumes to run dbench
 against.  I also did some quick sanity checking to see if prewarming 
-replicated volumes,
-
-
-
+replicated volumes, but did not see a substantial impact.
 
 ### Results
 
@@ -77,10 +74,11 @@ replicated volumes,
 {{</column>}}
 {{</section>}}
 
+After the fact I took a quick peek at prometheus and the bottleneck
+became quite clear.  Those poor little gigabit interfaces are gasping
+under the load.
 
-
-
-
+{{< figure src="../img/OpenEBSNetwork.png" title="OpenEBSNetwork Load">}}
 
 ## The test data
 

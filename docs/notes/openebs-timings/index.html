@@ -21,7 +21,7 @@ quick and sloppy testing for myself and was shocked by the results&hellip;" />
 in K8s?  I wasn&rsquo;t able to find any recent, quick numbers, so I did some
 quick and sloppy testing for myself and was shocked by the results&hellip;"><meta itemprop="datePublished" content="2023-02-10T20:54:11+07:00" />
 <meta itemprop="dateModified" content="2023-02-10T20:54:11+07:00" />
-<meta itemprop="wordCount" content="1071">
+<meta itemprop="wordCount" content="1106">
 <meta itemprop="keywords" content="k8s,openebs," />
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
@@ -145,7 +145,7 @@ and a singe sata SSD.</p>
 quick one minute test in each context with the command <code>dbench 4 -t 60</code>.  For
 replicated Jiva volumes, I created 10GB persistent volumes to run dbench
 against.  I also did some quick sanity checking to see if prewarming
-replicated volumes,</p>
+replicated volumes, but did not see a substantial impact.</p>
 <h3 id="results">Results</h3>
 <table>
 <thead>
@@ -210,6 +210,14 @@ replicated volumes,</p>
 
  </div>
 
+
+<p>After the fact I took a quick peek at prometheus and the bottleneck
+became quite clear.  Those poor little gigabit interfaces are gasping
+under the load.</p>
+<figure><img src="../img/OpenEBSNetwork.png"/><figcaption>
+            <h4>OpenEBSNetwork Load</h4>
+        </figcaption>
+</figure>
 
 <h2 id="the-test-data">The test data</h2>
 <h3 id="directly-on-the-k8s-node-itself">Directly on the K8s node itself</h3>
