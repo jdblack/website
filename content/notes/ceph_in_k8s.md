@@ -17,6 +17,8 @@ S3-like object store and NFS support in one happy container.  Ceph can be quite
 difficult to install the first couple times. Rook is intended to make deploying
 Ceph much easier.  
 
+<!--more-->
+
 Unfortunately, Ceph's resource requirements exceed that of my little home lab,
 which consists of four systems with four cores and sixteen gigs of ram each.  I
 managed to get a quick glance at prometheus just before the eviction storm and
@@ -25,7 +27,6 @@ saw that a whopping 72 pods were spun up.
 Clearly exploring topic in depth will have to wait until I add more mores,
 preferably with more ram and CPU.
 
-<!--more-->
 {{<section>}}
 {{<column width="60em">}}
 {{< toc >}}
