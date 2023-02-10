@@ -12,6 +12,8 @@ What sort of performance impact does Jiva replication have on drive performance
 in K8s?  I wasn't able to find any recent, quick numbers, so I did some
 quick and slopping testing for myself and was shocked by the results...
 
+<!--more-->
+
 Jiva volumes with a replication factor of two saw an 83% drop in throughput
 capacity. Three volume replication was even worse, weighing in at an 87%
 drop in performance.
@@ -19,7 +21,6 @@ drop in performance.
 In all fairness, I'm mostly living in the land of default options, but
 that much of a reduction in performance is dramatic.
 
-<!--more-->
 {{<section>}}
 {{<column>}}
 ### System Specs
