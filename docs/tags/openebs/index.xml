@@ -13,8 +13,7 @@
       <pubDate>Fri, 10 Feb 2023 20:54:11 +0700</pubDate>
       
       <guid>https://www.linuxguru.net/notes/openebs-timings/</guid>
-      <description>&lt;h2 id=&#34;introdution&#34;&gt;Introdution&lt;/h2&gt;
-&lt;p&gt;What sort of performance impact does Jiva replication have on drive performance
+      <description>&lt;p&gt;What sort of performance impact does Jiva replication have on drive performance
 in K8s?  I wasn&amp;rsquo;t able to find any recent, quick numbers, so I did some
 quick and slopping testing for myself and was shocked by the results&amp;hellip;&lt;/p&gt;</description>
     </item>
