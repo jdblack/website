@@ -6,7 +6,7 @@
     <description>Recent content on DevOps Thoughts and Ruminations</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 09 Feb 2023 12:25:05 +0700</lastBuildDate><atom:link href="https://www.linuxguru.net/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 10 Feb 2023 20:54:11 +0700</lastBuildDate><atom:link href="https://www.linuxguru.net/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Projects</title>
       <link>https://www.linuxguru.net/projects/</link>
@@ -31,6 +31,23 @@ Tandy CoCo 2 My nerdlife started when a friend&amp;rsquo;s father brought home a
     </item>
     
     <item>
+      <title>Openebs Jiva Performance Timings</title>
+      <link>https://www.linuxguru.net/notes/openebs-timings/</link>
+      <pubDate>Fri, 10 Feb 2023 20:54:11 +0700</pubDate>
+      
+      <guid>https://www.linuxguru.net/notes/openebs-timings/</guid>
+      <description>&lt;h2 id=&#34;introdution&#34;&gt;Introdution&lt;/h2&gt;
+&lt;p&gt;What sort of performance impact does Jiva replication have on drive performance
+in K8s?  I wasn&amp;rsquo;t able to find any recent, quick numbers, so I did some
+quick and slopping testing for myself and was shocked by the results&amp;hellip;&lt;/p&gt;
+&lt;p&gt;Jiva volumes with a replication factor of two saw an 83% drop in throughput
+capacity. Three volume replication was even worse, weighing in at an 87%
+drop in performance.&lt;/p&gt;
+&lt;p&gt;In all fairness, I&amp;rsquo;m mostly living in the land of default options, but
+that much of a reduction in performance is dramatic.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>Ceph in K8s</title>
       <link>https://www.linuxguru.net/notes/ceph_in_k8s/</link>
       <pubDate>Thu, 09 Feb 2023 12:25:05 +0700</pubDate>
@@ -41,10 +58,12 @@ ceph.  Ceph is a distributed filesystem that provides persistent storage,
 S3-like object store and NFS support in one happy container.  Ceph can be quite
 difficult to install the first couple times. Rook is intended to make deploying
 Ceph much easier.&lt;/p&gt;
-&lt;p&gt;Unfortunately, Ceph&amp;rsquo;s resource requirements exceed that of my little home
-lab, which consists of four systems with four cores and sixteen gigs of ram
-each. I&amp;rsquo;ll reexplore this topic when I have expanded the cluster to six or
-eight nodes.&lt;/p&gt;</description>
+&lt;p&gt;Unfortunately, Ceph&amp;rsquo;s resource requirements exceed that of my little home lab,
+which consists of four systems with four cores and sixteen gigs of ram each.  I
+managed to get a quick glance at prometheus just before the eviction storm and
+saw that a whopping 72 pods were spun up.&lt;/p&gt;
+&lt;p&gt;Clearly exploring topic in depth will have to wait until I add more mores,
+preferably with more ram and CPU.&lt;/p&gt;</description>
     </item>
     
     <item>

@@ -93,6 +93,31 @@ if (!doNotTrack) {
 	
 	<header class="list__header">
 		<h2 class="list__title post__title">
+			<a href="/notes/openebs-timings/" rel="bookmark">
+			Openebs Jiva Performance Timings
+			</a>
+		</h2>
+		<div class="list__meta meta"><div class="meta__item-author meta__item">
+	<svg class="meta__icon icon icon-author" width="16" height="16" viewBox="0 0 12 16"><path d="M6 1c2.2 0 3.5 2 3.5 4.5C9.5 7 8.9 8.2 8 9c2.9.8 4 2.5 4 5v1H0v-1c0-2.5 1.1-4.2 4-5-.9-.8-1.5-2-1.5-3.5C2.5 3 3.8 1 6 1z"/></svg><span class="meta__text">James Blackwell</span>
+</div>
+<div class="meta__item-datetime meta__item">
+	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2023-02-10T20:54:11&#43;07:00">2023-02-10</time></div></div>
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		<h2 id="introdution">Introdution</h2>
+<p>What sort of performance impact does Jiva replication have on drive performance
+in K8s?  I wasn&rsquo;t able to find any recent, quick numbers, so I did some
+quick and slopping testing for myself and was shocked by the results&hellip;</p>
+<p>Jiva volumes with a replication factor of two saw an 83% drop in throughput
+capacity. Three volume replication was even worse, weighing in at an 87%
+drop in performance.</p>
+<p>In all fairness, I&rsquo;m mostly living in the land of default options, but
+that much of a reduction in performance is dramatic.</p>
+	</div>
+</article><article class="list__item post">
+	
+	<header class="list__header">
+		<h2 class="list__title post__title">
 			<a href="/notes/ceph_in_k8s/" rel="bookmark">
 			Ceph in K8s
 			</a>
@@ -111,10 +136,12 @@ ceph.  Ceph is a distributed filesystem that provides persistent storage,
 S3-like object store and NFS support in one happy container.  Ceph can be quite
 difficult to install the first couple times. Rook is intended to make deploying
 Ceph much easier.</p>
-<p>Unfortunately, Ceph&rsquo;s resource requirements exceed that of my little home
-lab, which consists of four systems with four cores and sixteen gigs of ram
-each. I&rsquo;ll reexplore this topic when I have expanded the cluster to six or
-eight nodes.</p>
+<p>Unfortunately, Ceph&rsquo;s resource requirements exceed that of my little home lab,
+which consists of four systems with four cores and sixteen gigs of ram each.  I
+managed to get a quick glance at prometheus just before the eviction storm and
+saw that a whopping 72 pods were spun up.</p>
+<p>Clearly exploring topic in depth will have to wait until I add more mores,
+preferably with more ram and CPU.</p>
 	</div>
 </article><article class="list__item post">
 	
@@ -218,6 +245,7 @@ parts of the service need to be broken out to provide for a cluster.</p>
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/notes/openebs-timings/">Openebs Jiva Performance Timings</a></li>
 			<li class="widget__item"><a class="widget__link" href="/notes/ceph_in_k8s/">Ceph in K8s</a></li>
 			<li class="widget__item"><a class="widget__link" href="/post/clustering_cinc/">Clustering cinc or chef Part 1</a></li>
 			<li class="widget__item"><a class="widget__link" href="/post/welcome/">Welcome</a></li>
@@ -250,7 +278,8 @@ parts of the service need to be broken out to provide for a cluster.</p>
 		<a class="widget-taglist__link widget__link btn" href="/tags/chef/" title="chef">chef (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/cinc/" title="cinc">cinc (1)</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/config-management/" title="config management">config management (1)</a>
-		<a class="widget-taglist__link widget__link btn" href="/tags/k8s/" title="k8s">k8s (1)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/k8s/" title="k8s">k8s (2)</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/openebs/" title="openebs">openebs (1)</a>
 	</div>
 </div><div class="widget-search widget">
 	<form class="widget-search__form" role="search" method="get" action="https://google.com/search">

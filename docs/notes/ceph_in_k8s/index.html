@@ -13,10 +13,12 @@ ceph.  Ceph is a distributed filesystem that provides persistent storage,
 S3-like object store and NFS support in one happy container.  Ceph can be quite
 difficult to install the first couple times. Rook is intended to make deploying
 Ceph much easier.
-Unfortunately, Ceph&rsquo;s resource requirements exceed that of my little home
-lab, which consists of four systems with four cores and sixteen gigs of ram
-each. I&rsquo;ll reexplore this topic when I have expanded the cluster to six or
-eight nodes." />
+Unfortunately, Ceph&rsquo;s resource requirements exceed that of my little home lab,
+which consists of four systems with four cores and sixteen gigs of ram each.  I
+managed to get a quick glance at prometheus just before the eviction storm and
+saw that a whopping 72 pods were spun up.
+Clearly exploring topic in depth will have to wait until I add more mores,
+preferably with more ram and CPU." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.linuxguru.net/notes/ceph_in_k8s/" /><meta property="article:section" content="notes" />
 <meta property="article:published_time" content="2023-02-09T12:25:05+07:00" />
@@ -28,12 +30,14 @@ ceph.  Ceph is a distributed filesystem that provides persistent storage,
 S3-like object store and NFS support in one happy container.  Ceph can be quite
 difficult to install the first couple times. Rook is intended to make deploying
 Ceph much easier.
-Unfortunately, Ceph&rsquo;s resource requirements exceed that of my little home
-lab, which consists of four systems with four cores and sixteen gigs of ram
-each. I&rsquo;ll reexplore this topic when I have expanded the cluster to six or
-eight nodes."><meta itemprop="datePublished" content="2023-02-09T12:25:05+07:00" />
+Unfortunately, Ceph&rsquo;s resource requirements exceed that of my little home lab,
+which consists of four systems with four cores and sixteen gigs of ram each.  I
+managed to get a quick glance at prometheus just before the eviction storm and
+saw that a whopping 72 pods were spun up.
+Clearly exploring topic in depth will have to wait until I add more mores,
+preferably with more ram and CPU."><meta itemprop="datePublished" content="2023-02-09T12:25:05+07:00" />
 <meta itemprop="dateModified" content="2023-02-09T12:25:05+07:00" />
-<meta itemprop="wordCount" content="824">
+<meta itemprop="wordCount" content="853">
 <meta itemprop="keywords" content="k8s,ceph," />
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
@@ -125,10 +129,12 @@ ceph.  Ceph is a distributed filesystem that provides persistent storage,
 S3-like object store and NFS support in one happy container.  Ceph can be quite
 difficult to install the first couple times. Rook is intended to make deploying
 Ceph much easier.</p>
-<p>Unfortunately, Ceph&rsquo;s resource requirements exceed that of my little home
-lab, which consists of four systems with four cores and sixteen gigs of ram
-each. I&rsquo;ll reexplore this topic when I have expanded the cluster to six or
-eight nodes.</p>
+<p>Unfortunately, Ceph&rsquo;s resource requirements exceed that of my little home lab,
+which consists of four systems with four cores and sixteen gigs of ram each.  I
+managed to get a quick glance at prometheus just before the eviction storm and
+saw that a whopping 72 pods were spun up.</p>
+<p>Clearly exploring topic in depth will have to wait until I add more mores,
+preferably with more ram and CPU.</p>
 <div class="section" style="display:flex"> 
 <div class="column"  style="column-width:60em" ><div>
     <h2>Table Of Contents</h2>
@@ -310,6 +316,14 @@ taint!</strong></p>
 </main>
 
 
+<nav class="pager flex">
+	<div class="pager__item pager__item--next">
+		<a class="pager__link" href="/notes/openebs-timings/" rel="next">
+			<span class="pager__subtitle">Next&thinsp;»</span>
+			<p class="pager__title">Openebs Jiva Performance Timings</p>
+		</a>
+	</div>
+</nav>
 
 
 			</div>
