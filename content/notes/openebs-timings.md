@@ -9,7 +9,7 @@ tags:
 
 What sort of performance impact does Jiva replication have on drive performance
 in K8s?  I wasn't able to find any recent, quick numbers, so I did some
-quick and slopping testing for myself and was shocked by the results...
+quick and sloppy testing for myself and was shocked by the results...
 
 <!--more-->
 ## Introdution
