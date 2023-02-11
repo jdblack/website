@@ -15,11 +15,22 @@ quick and sloppy testing for myself and was shocked by the results...
 ## Introdution
 
 Jiva volumes with a replication factor of two saw an 83% drop in throughput
-capacity. Three volume replication was even worse, weighing in at an 87%
-drop in performance.
+capacity. Three volume replication was even worse, weighing in at an 87% drop
+in performance.  In all fairness, I'm mostly living in the land of default
+options, but that much of a reduction in performance feels rather drastic.  
 
-In all fairness, I'm mostly living in the land of default options, but
-that much of a reduction in performance is dramatic.
+The OpenEBS documentation seems to indirectly confirm this performance hit.
+[The openebs docs for mayastor ](https://openebs.io/docs/concepts/mayastor)
+confirm this result.
+
+> By comparison, most pre-CAS shared everything storage systems are widely
+> thought to impart an overhead of at least 40% and sometimes as much as 80% or
+> more than the capabilities of the underlying devices or cloud volumes.
+> Additionally, pre-CAS shared storage scales in an unpredictable manner as I/O
+> from many workloads interact and complete for the capabilities of the shared
+> storage system.
+
+
 
 {{<section>}}
 {{<column>}}

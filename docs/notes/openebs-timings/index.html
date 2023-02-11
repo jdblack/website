@@ -21,7 +21,7 @@ quick and sloppy testing for myself and was shocked by the results&hellip;" />
 in K8s?  I wasn&rsquo;t able to find any recent, quick numbers, so I did some
 quick and sloppy testing for myself and was shocked by the results&hellip;"><meta itemprop="datePublished" content="2023-02-10T20:54:11+07:00" />
 <meta itemprop="dateModified" content="2023-02-10T20:54:11+07:00" />
-<meta itemprop="wordCount" content="1315">
+<meta itemprop="wordCount" content="1396">
 <meta itemprop="keywords" content="k8s,openebs," />
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
@@ -111,10 +111,20 @@ in K8s?  I wasn&rsquo;t able to find any recent, quick numbers, so I did some
 quick and sloppy testing for myself and was shocked by the results&hellip;</p>
 <h2 id="introdution">Introdution</h2>
 <p>Jiva volumes with a replication factor of two saw an 83% drop in throughput
-capacity. Three volume replication was even worse, weighing in at an 87%
-drop in performance.</p>
-<p>In all fairness, I&rsquo;m mostly living in the land of default options, but
-that much of a reduction in performance is dramatic.</p>
+capacity. Three volume replication was even worse, weighing in at an 87% drop
+in performance.  In all fairness, I&rsquo;m mostly living in the land of default
+options, but that much of a reduction in performance feels rather drastic.</p>
+<p>The OpenEBS documentation seems to indirectly confirm this performance hit.
+<a href="https://openebs.io/docs/concepts/mayastor">The openebs docs for mayastor </a>
+confirm this result.</p>
+<blockquote>
+<p>By comparison, most pre-CAS shared everything storage systems are widely
+thought to impart an overhead of at least 40% and sometimes as much as 80% or
+more than the capabilities of the underlying devices or cloud volumes.
+Additionally, pre-CAS shared storage scales in an unpredictable manner as I/O
+from many workloads interact and complete for the capabilities of the shared
+storage system.</p>
+</blockquote>
 <div class="section" style="display:flex"> 
 <div class="column"  ><h3 id="system-specs">System Specs</h3>
 <p>The system here is your typical craptastic home lab that targets that sweet
