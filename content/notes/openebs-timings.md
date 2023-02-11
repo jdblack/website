@@ -1,5 +1,5 @@
 ---
-title: "Openebs Jiva Performance Timings"
+title: "Openebs Jiva/Cstor Performance Timings"
 date: 2023-02-10T20:54:11+07:00
 toc: false
 tags: 
@@ -52,11 +52,21 @@ Network Size
 
 ### Testing Methodology
 
+As already implied, these tests were not performed rigorously. The goal was to
+get a quick sense in relative peformance
+
 For each test case I installed [dbench](https://dbench.samba.org/) and ran a
 quick one minute test in each context with the command `dbench 4 -t 60`.  For
-replicated Jiva volumes, I created 10GB persistent volumes to run dbench
-against.  I also did some quick sanity checking to see if prewarming 
+replicated Jiva and /Cstor volumes, I created 10GB persistent volumes to run
+dbench against.  I also did some quick sanity checking to see if prewarming
 replicated volumes, but did not see a substantial impact.
+
+
+I was very surprised by how poorly cstor performed. Cstor performance, Despite
+having dedicated logical volumes (Jiva relies upon hostpath),  performed worth
+with two replicas than Jiva with three.  
+
+
 
 ### Results
 
@@ -67,6 +77,7 @@ replicated volumes, but did not see a substantial impact.
 | Jiva HostPath         | 461.453 MB/sec  | 36.419 ms |
 | Jiva with two replicas | 80.6754 MB/sec | 578.915 ms|
 | Jiva with three replicas | 61.2597 MB/sec | 710.717 ms |
+| CStor with two replicas | 50.5629 MB/sec  | 1134.019 ms |
 
 {{</column>}}
 {{<column>}}
@@ -273,3 +284,38 @@ Throughput 61.2597 MB/sec  4 clients  4 procs  max_latency=710.717 ms
 # OpenEBS jiva replicas 2
 
 ```
+
+```bash
+# Cstore replicas 2
+root@ubuntu-pv:/mnt# dbench 4 -t 60 -D /mnt
+dbench version 4.00 - Copyright Andrew Tridgell 1999-2004
+
+Running for 60 seconds with load '/usr/share/dbench/client.txt' and minimum warmup 12 secs
+2 of 4 processes prepared for launch   0 sec
+4 of 4 processes prepared for launch   0 sec
+releasing clients
+   4      1884   105.47 MB/sec  warmup   1 sec  latency 72.575 ms
+   ...
+   4    167654    50.56 MB/sec  execute  59 sec  latency 121.113 ms
+   4  cleanup  60 sec
+   0  cleanup  60 sec
+
+ Operation      Count    AvgLat    MaxLat
+ ----------------------------------------
+ NTCreateX      98068     0.048    29.423
+ Close          71998     0.004     1.113
+ Rename          4158     0.186     8.397
+ Unlink         19830     0.181    16.361
+ Qpathinfo      88996     0.026    15.805
+ Qfileinfo      15512     0.004     0.589
+ Qfsinfo        16306     0.007     0.779
+ Sfileinfo       7982     0.819   504.358
+ Find           34375     0.062     8.533
+ WriteX         48452     0.180   186.603
+ ReadX         153880     0.017   257.168
+ LockX            320     0.008     0.054
+ UnlockX          320     0.003     0.007
+ Flush           6860    29.957  1134.001
+
+Throughput 50.5629 MB/sec  4 clients  4 procs  max_latency=1134.019 ms
+
