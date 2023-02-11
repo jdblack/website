@@ -3,7 +3,6 @@ title: "Ceph in K8s"
 date: 2023-02-09T12:25:05+07:00
 toc: false
 categories:
- - notes
  - on hold
 tags:
  - k8s
