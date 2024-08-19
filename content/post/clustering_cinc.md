@@ -1,5 +1,5 @@
 ---
-title: "Clustering cinc or chef Part 1"
+title: "Clustering Cinc and Chef Server Part 1"
 date: 2023-01-16T15:27:28+07:00
 categories:
  - devops
@@ -15,20 +15,20 @@ parts of the service need to be broken out to provide for a cluster.
 
 <!--more-->
 
-~~Chef~~ Cinc is surprisingly simple to set up, especially considering
-the amount of underlying complexity that is hidden from the user.
-
+Standing up a standalone Chef/Cinc server is surprising simple to do thanks to
+the Omnibus deployment.  Grab single command line from teh website, pipe
+it through bash, and in about 5 minutes, you have a Chef/Cinc server ready to
+go talk HTTPS.
 
 ```
 # curl -L https://omnitruck.cinc.sh/install.sh | sudo bash -s -- -P cinc-server -v 14
 # cinc-server-ctl reconfigure
  
 ```
-Sure enough, we have a brand new ~~Chef~~ Cinc server, ready to manage 
-hundreds, or evne thousands of clients. It almost feels too easy, doesn't
-it?
 
-Let's take a look at what we have..
+Sure enough, we have a brand new Chef or Cinc server, ready to manage hundreds,
+or even thousands of clients. It almost feels too easy, doesn't it?  Let's take
+a look at what we have..
 
 {{< mermaid >}}
 flowchart LR
@@ -36,29 +36,28 @@ clients[/cinc clients/]-->cinc[api server]
 subgraph Standalone Chef
 cinc-->postgres
 cinc-->opensearch
-cinc-->others(and a slew of other services)
+cinc-->others(and a slew of other services, including redis)
 end
 {{</mermaid >}}
 
-From our perspective, it's just a ~~Chef~~ Cinc server, taking and 
+From our perspective, it's just a Chef/Cinc server, taking and 
 serving request. Under the blankets, though, there's a bit more to it.
 Things, at least at first, are just fine!  
 
 As time passes, it becomes more clear that our entire infrastructure is
 dependent upon that server never, ever going down.  Something as simple as a
-kernel upgrade on your ~~Chef~~ Cinc server often causes the entire
-organization to become rudderless. Your organization loses the ability to scale
-new app servers, becuase chef is down. SecOps become rudderless, as they lose
-the ability to patch zero days, because the ~~chef~~ cinc server is down.
-Tools that rely upon inventory management lose the ability to watch systems.
-It can get ugly.  Its our responsibility to avoid single points of failure like
-these. 
+kernel upgrade on your Chef/Cinc server often causes the entire organization to
+become rudderless. Your organization loses the ability to scale new app
+servers, becuase chef is down. SecOps become rudderless, as they lose the
+ability to patch zero days, because the server is down.  Tools that rely upon
+inventory management lose the ability to watch systems.  It can get ugly.  Its
+our responsibility to avoid single points of failure like these. 
 
-There is thankfully a process by which we can run as many ~~chef~~ cinc servers
-as we want!  The api server itself is stateless and we can run as many of them
-as we want, as long as we externalize the Postgres Database and Opensearch
-Cluster. The rest of the stuff, nginx, reddis, rabbitmq can stay right 
-where it is.
+There is thankfully a process by which we can run as many cinc (or chef)
+servers as we want!  The api server itself is stateless and we can run as many
+of them as we want, as long as we externalize the Postgres Database and
+Opensearch Cluster.  The rest of the stuff, nginx, reddis, rabbitmq can stay
+right where it is.
 
 {{< mermaid >}}
 flowchart LR
@@ -81,12 +80,11 @@ cluster-->postgres
 {{</mermaid >}}
 
 
-Things are slightly more complicated then the above chart, but not by 
-very much.  Firstly, redundancy for the database server must be addressed, 
-either by using Amazon RDS in multi-az mode (which will handle all failover
-for you), or manually setting up some sort of replication and failover 
-process with the database server.
-
+Things are slightly more complicated then the above chart, but not by much!
+Firstly, redundancy for the database server must be addressed, either by using
+Amazon RDS in multi-az mode (which will handle all failover for you), or
+manually setting up some sort of replication and failover process with the
+database server.
 
 Setting up redundancy with opensearch is less important, as the data can be
 regenerated at any time by running "cinc-server-ctl reindex" on any of the cinc
@@ -119,6 +117,12 @@ opensearchLB-->opensearch2
 opensearchLB-->opensearch3
 end
 {{</mermaid >}}
+
+This series of articles is going to explain, step by step, how to build 
+and deploy a scalable, clustered Cinc/Chef setup within Kubernetes!
+
+
+
 
 In our next article, we will cover the basic configuration changes needed
 to externalize the Database and Search engine. 

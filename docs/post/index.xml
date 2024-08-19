@@ -6,9 +6,19 @@
     <description>Recent content in Posts on DevOps Thoughts and Ruminations</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 16 Jan 2023 15:27:28 +0700</lastBuildDate><atom:link href="https://www.linuxguru.net/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 19 Aug 2024 12:04:21 +0700</lastBuildDate><atom:link href="https://www.linuxguru.net/post/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Clustering cinc or chef Part 1</title>
+      <title>The Rabid Cupcake</title>
+      <link>https://www.linuxguru.net/post/rabid_cupcake/</link>
+      <pubDate>Mon, 19 Aug 2024 12:04:21 +0700</pubDate>
+      
+      <guid>https://www.linuxguru.net/post/rabid_cupcake/</guid>
+      <description>&lt;p&gt;Today I asked Claud Sonnet 3.5 to write a 5,000 word story about a rabid
+cupcake. The story, though only 3,500 words, did not disapoint&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Clustering Cinc and Chef Server Part 1</title>
       <link>https://www.linuxguru.net/post/clustering_cinc/</link>
       <pubDate>Mon, 16 Jan 2023 15:27:28 +0700</pubDate>
       
