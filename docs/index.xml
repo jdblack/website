@@ -4,85 +4,58 @@
     <title>DevOps Thoughts and Ruminations</title>
     <link>https://www.linuxguru.net/</link>
     <description>Recent content on DevOps Thoughts and Ruminations</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 19 Aug 2024 12:04:21 +0700</lastBuildDate><atom:link href="https://www.linuxguru.net/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 19 Aug 2024 12:04:21 +0700</lastBuildDate>
+    <atom:link href="https://www.linuxguru.net/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Projects</title>
       <link>https://www.linuxguru.net/projects/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>https://www.linuxguru.net/projects/</guid>
-      <description>Current Projects Song of the Day Is a Slack bot written in golang to provide jukebox support to group channels
-MFA Is a small app for sytems to do totp keys (six digit mfa auth)
-chef_k8s_docker is docker container to run Chef Cinc as a scalable container.
-openvpn_k8s Access your local network from the outside world by running openvpn inside your k8s infrastructure!
-k8s_tf An on-metal buildout of K8s including MetalLB, Cert-Manager, OpenEBS, internal docker registry and a fully scaleable Chef Cinc</description>
+      <description>Current Projects Song of the Day Is a Slack bot written in golang to provide jukebox support to group channels&#xA;MFA Is a small app for sytems to do totp keys (six digit mfa auth)&#xA;chef_k8s_docker is docker container to run Chef Cinc as a scalable container.&#xA;openvpn_k8s Access your local network from the outside world by running openvpn inside your k8s infrastructure!&#xA;k8s_tf An on-metal buildout of K8s including MetalLB, Cert-Manager, OpenEBS, internal docker registry and a fully scaleable Chef Cinc</description>
     </item>
-    
     <item>
       <title>About me</title>
       <link>https://www.linuxguru.net/about/</link>
       <pubDate>Fri, 30 Dec 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://www.linuxguru.net/about/</guid>
-      <description>Hello, My name is James! I&amp;rsquo;m a devops engineer by both trade and heart.
-Tandy CoCo 2 My nerdlife started when a friend&amp;rsquo;s father brought home a teensy little computer named the Timex Sinclair 1000. characters. My opportunities with the machine were limited, but I became quicly hooked. Within a few months, I had my own computer of my own, a Tandy Color Computer 2, also known as a CoCo2. These machines, sold at Radio Shack, were rather limited in nature, having sported 16K of ram, a 0.</description>
+      <description>Hello, My name is James! I&amp;rsquo;m a devops engineer by both trade and heart.&#xA;Tandy CoCo 2 My nerdlife started when a friend&amp;rsquo;s father brought home a teensy little computer named the Timex Sinclair 1000. characters. My opportunities with the machine were limited, but I became quicly hooked. Within a few months, I had my own computer of my own, a Tandy Color Computer 2, also known as a CoCo2. These machines, sold at Radio Shack, were rather limited in nature, having sported 16K of ram, a 0.</description>
     </item>
-    
     <item>
       <title>The Rabid Cupcake</title>
       <link>https://www.linuxguru.net/post/rabid_cupcake/</link>
       <pubDate>Mon, 19 Aug 2024 12:04:21 +0700</pubDate>
-      
       <guid>https://www.linuxguru.net/post/rabid_cupcake/</guid>
-      <description>&lt;p&gt;Today I asked Claud Sonnet 3.5 to write a 5,000 word story about a rabid
-cupcake. The story, though only 3,500 words, did not disapoint&lt;/p&gt;</description>
+      <description>&lt;p&gt;Today I asked Claud Sonnet 3.5 to write a 5,000 word story about a rabid&#xA;cupcake. The story, though only 3,500 words, did not disapoint&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Openebs Jiva/Cstor Performance Timings</title>
       <link>https://www.linuxguru.net/notes/openebs-timings/</link>
       <pubDate>Fri, 10 Feb 2023 20:54:11 +0700</pubDate>
-      
       <guid>https://www.linuxguru.net/notes/openebs-timings/</guid>
-      <description>&lt;p&gt;What sort of performance impact does Jiva replication have on drive performance
-in K8s?  I wasn&amp;rsquo;t able to find any recent, quick numbers, so I did some
-quick and sloppy testing for myself and was shocked by the results&amp;hellip;&lt;/p&gt;</description>
+      <description>&lt;p&gt;What sort of performance impact does Jiva replication have on drive performance&#xA;in K8s?  I wasn&amp;rsquo;t able to find any recent, quick numbers, so I did some&#xA;quick and sloppy testing for myself and was shocked by the results&amp;hellip;&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Ceph in K8s</title>
       <link>https://www.linuxguru.net/notes/ceph_in_k8s/</link>
       <pubDate>Thu, 09 Feb 2023 12:25:05 +0700</pubDate>
-      
       <guid>https://www.linuxguru.net/notes/ceph_in_k8s/</guid>
-      <description>&lt;p&gt;In this note, I cover the details that I have uncovered thus far with rook and
-ceph.  Ceph is a distributed filesystem that provides persistent storage,
-S3-like object store and NFS support in one happy container.  Ceph can be quite
-difficult to install the first couple times. Rook is intended to make deploying
-Ceph much easier.&lt;/p&gt;</description>
+      <description>&lt;p&gt;In this note, I cover the details that I have uncovered thus far with rook and&#xA;ceph.  Ceph is a distributed filesystem that provides persistent storage,&#xA;S3-like object store and NFS support in one happy container.  Ceph can be quite&#xA;difficult to install the first couple times. Rook is intended to make deploying&#xA;Ceph much easier.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Clustering Cinc and Chef Server Part 1</title>
       <link>https://www.linuxguru.net/post/clustering_cinc/</link>
       <pubDate>Mon, 16 Jan 2023 15:27:28 +0700</pubDate>
-      
       <guid>https://www.linuxguru.net/post/clustering_cinc/</guid>
-      <description>&lt;p&gt;This article is the first of a series about setting up Cinc or Chef as as a
-horizontally scalable service. This first post introduces the concept of which
-parts of the service need to be broken out to provide for a cluster.&lt;/p&gt;</description>
+      <description>&lt;p&gt;This article is the first of a series about setting up Cinc or Chef as as a&#xA;horizontally scalable service. This first post introduces the concept of which&#xA;parts of the service need to be broken out to provide for a cluster.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Welcome</title>
       <link>https://www.linuxguru.net/post/welcome/</link>
       <pubDate>Thu, 29 Dec 2022 21:24:48 +0700</pubDate>
-      
       <guid>https://www.linuxguru.net/post/welcome/</guid>
       <description>Welcome!</description>
     </item>
-    
   </channel>
 </rss>

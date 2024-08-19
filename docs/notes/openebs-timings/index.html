@@ -7,22 +7,25 @@
 	<title>Openebs Jiva/Cstor Performance Timings - DevOps Thoughts and Ruminations</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
 	<meta name="description" content="">
-		<meta property="og:title" content="Openebs Jiva/Cstor Performance Timings" />
-<meta property="og:description" content="What sort of performance impact does Jiva replication have on drive performance
-in K8s?  I wasn&rsquo;t able to find any recent, quick numbers, so I did some
-quick and sloppy testing for myself and was shocked by the results&hellip;" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://www.linuxguru.net/notes/openebs-timings/" /><meta property="article:section" content="notes" />
-<meta property="article:published_time" content="2023-02-10T20:54:11+07:00" />
-<meta property="article:modified_time" content="2023-02-10T20:54:11+07:00" />
+		<meta property="og:url" content="https://www.linuxguru.net/notes/openebs-timings/">
+  <meta property="og:site_name" content="DevOps Thoughts and Ruminations">
+  <meta property="og:title" content="Openebs Jiva/Cstor Performance Timings">
+  <meta property="og:description" content="What sort of performance impact does Jiva replication have on drive performance in K8s? I wasn’t able to find any recent, quick numbers, so I did some quick and sloppy testing for myself and was shocked by the results…">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="notes">
+    <meta property="article:published_time" content="2023-02-10T20:54:11+07:00">
+    <meta property="article:modified_time" content="2023-02-10T20:54:11+07:00">
+    <meta property="article:tag" content="K8s">
+    <meta property="article:tag" content="Openebs">
 
-		<meta itemprop="name" content="Openebs Jiva/Cstor Performance Timings">
-<meta itemprop="description" content="What sort of performance impact does Jiva replication have on drive performance
-in K8s?  I wasn&rsquo;t able to find any recent, quick numbers, so I did some
-quick and sloppy testing for myself and was shocked by the results&hellip;"><meta itemprop="datePublished" content="2023-02-10T20:54:11+07:00" />
-<meta itemprop="dateModified" content="2023-02-10T20:54:11+07:00" />
-<meta itemprop="wordCount" content="1396">
-<meta itemprop="keywords" content="k8s,openebs," />
+		
+  <meta itemprop="name" content="Openebs Jiva/Cstor Performance Timings">
+  <meta itemprop="description" content="What sort of performance impact does Jiva replication have on drive performance in K8s? I wasn’t able to find any recent, quick numbers, so I did some quick and sloppy testing for myself and was shocked by the results…">
+  <meta itemprop="datePublished" content="2023-02-10T20:54:11+07:00">
+  <meta itemprop="dateModified" content="2023-02-10T20:54:11+07:00">
+  <meta itemprop="wordCount" content="1396">
+  <meta itemprop="keywords" content="K8s,Openebs">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -32,18 +35,6 @@ quick and sloppy testing for myself and was shocked by the results&hellip;"><met
 	<link rel="stylesheet" href="/css/custom.css">
 
 	<link rel="shortcut icon" href="/favicon.ico">
-		
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VTZZVQGDLY"></script>
-<script>
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.dataLayer = window.dataLayer || [];
-	function gtag(){dataLayer.push(arguments);}
-	gtag('js', new Date());
-	gtag('config', 'G-VTZZVQGDLY', { 'anonymize_ip': false });
-}
-</script>
-
 </head>
 <body class="body">
 	<div class="container container--outer">
@@ -141,12 +132,12 @@ and a singe sata SSD.</p>
 <dd>5.15.0-60</dd>
 <dt>Network Size</dt>
 <dd>1 Gigabit</dd>
-</dl>
+</dl></div>
+
+
+
+<div class="column"  ><ruler>
 </div>
-
-
-
-<div class="column"  ><ruler></div>
 
 
 
@@ -234,9 +225,9 @@ with two replicas than Jiva with three.</p>
 <p>After the fact I took a quick peek at prometheus and the bottleneck
 became quite clear.  Those poor little gigabit interfaces are gasping
 under the load.</p>
-<figure><img src="../img/OpenEBSNetwork.png"/><figcaption>
-            <h4>OpenEBSNetwork Load</h4>
-        </figcaption>
+<figure><img src="../img/OpenEBSNetwork.png"><figcaption>
+      <h4>OpenEBSNetwork Load</h4>
+    </figcaption>
 </figure>
 
 <h2 id="the-test-data">The test data</h2>
@@ -474,6 +465,7 @@ under the load.</p>
 		</a>
 	</div>
 </nav>
+
 
 
 			</div>

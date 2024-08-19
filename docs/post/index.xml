@@ -4,38 +4,30 @@
     <title>Posts on DevOps Thoughts and Ruminations</title>
     <link>https://www.linuxguru.net/post/</link>
     <description>Recent content in Posts on DevOps Thoughts and Ruminations</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 19 Aug 2024 12:04:21 +0700</lastBuildDate><atom:link href="https://www.linuxguru.net/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 19 Aug 2024 12:04:21 +0700</lastBuildDate>
+    <atom:link href="https://www.linuxguru.net/post/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>The Rabid Cupcake</title>
       <link>https://www.linuxguru.net/post/rabid_cupcake/</link>
       <pubDate>Mon, 19 Aug 2024 12:04:21 +0700</pubDate>
-      
       <guid>https://www.linuxguru.net/post/rabid_cupcake/</guid>
-      <description>&lt;p&gt;Today I asked Claud Sonnet 3.5 to write a 5,000 word story about a rabid
-cupcake. The story, though only 3,500 words, did not disapoint&lt;/p&gt;</description>
+      <description>&lt;p&gt;Today I asked Claud Sonnet 3.5 to write a 5,000 word story about a rabid&#xA;cupcake. The story, though only 3,500 words, did not disapoint&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Clustering Cinc and Chef Server Part 1</title>
       <link>https://www.linuxguru.net/post/clustering_cinc/</link>
       <pubDate>Mon, 16 Jan 2023 15:27:28 +0700</pubDate>
-      
       <guid>https://www.linuxguru.net/post/clustering_cinc/</guid>
-      <description>&lt;p&gt;This article is the first of a series about setting up Cinc or Chef as as a
-horizontally scalable service. This first post introduces the concept of which
-parts of the service need to be broken out to provide for a cluster.&lt;/p&gt;</description>
+      <description>&lt;p&gt;This article is the first of a series about setting up Cinc or Chef as as a&#xA;horizontally scalable service. This first post introduces the concept of which&#xA;parts of the service need to be broken out to provide for a cluster.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Welcome</title>
       <link>https://www.linuxguru.net/post/welcome/</link>
       <pubDate>Thu, 29 Dec 2022 21:24:48 +0700</pubDate>
-      
       <guid>https://www.linuxguru.net/post/welcome/</guid>
       <description>Welcome!</description>
     </item>
-    
   </channel>
 </rss>
